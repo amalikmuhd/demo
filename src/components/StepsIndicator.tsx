@@ -1,4 +1,4 @@
-import { IoArrowBack } from "react-icons/io5";
+// import { IoArrowBack } from "react-icons/io5";
 
 interface Steps {
   indicators: React.JSX.Element[];
@@ -7,7 +7,7 @@ interface Steps {
   totalSteps: number;
 }
 
-const StepIndicator = ({ handlePrevious, indicators, step, totalSteps }: Steps) => {
+const StepIndicator = ({ indicators }: Steps) => {
   return (
     <div className="flex flex-row justify-between items-center px-[16px]">
       {/* <div onClick={() => handlePrevious()} className="flex flex-row items-center gap-[2px] mr-10">

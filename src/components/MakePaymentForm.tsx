@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "../styles/MakePaymentForm.css"; // You'll create this CSS file for styling
-import CustomInput from "./CustomInput";
+// import CustomInput from "./CustomInput";
 
 interface IFormInput {
   applicationType: string;
