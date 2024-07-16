@@ -17,15 +17,21 @@ const useStep = (stepNames: string[]) => {
     indicators.push(
       <div key={i} className="flex flex-col items-center">
         <div className="flex flex-row items-center">
-          <div className={`w-6 h-6 rounded-full border ${i <= step ? "bg-[green] " : "border-gray-300 bg-white"}`} />
+          <div className="flex flex-col justify-center items-center">
+            <div
+              className={`w-8 h-8 rounded-full border flex items-center justify-center ${
+                i <= step ? "bg-[#12A53E] " : "border-[#B2BCB5] bg-[#B2BCB5]"
+              }`}
+            >
+              <p className="text-white font-inter font-normal text-[20px]">{i}</p>
+            </div>
+            <h1 className={`text-[12px] font-normal  ${i <= step ? "text-[#434343]" : "text-[#949494]"}`}>
+              {stepNames[i - 1]}
+            </h1>
+          </div>
 
-          {i < totalSteps && <div className={`w-32 h-1 ${i < step ? "bg-[#ccc]" : "bg-[#ccc]"}`} />}
+          {i < totalSteps && <div className={`w-20 h-1  ${i < step ? "bg-[#D9D9D9]" : "bg-[#D9D9D9]"}`} />}
         </div>
-        {/* <h1
-          className={`text-lg font-bold leading-tight text-center mb-2 ${i <= step ? "text-black" : "text-gray-500"}`}
-        >
-          {stepNames[i - 1]}
-        </h1> */}
       </div>
     );
   }
