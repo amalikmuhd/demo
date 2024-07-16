@@ -1,87 +1,64 @@
-// src/components/Form.tsx
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import "../styles/MakePaymentForm.css"; // You'll create this CSS file for styling
-// import CustomInput from "./CustomInput";
+import CustomInput from "./CustomInput";
+import CustomButton from "./CustomButton";
+import { FaArrowRight } from "react-icons/fa6";
+import CustomSelect from "./CustomSelect";
+import data from "../data";
+import { IMakePaymentForm } from "../types";
+import { makePaymentFormSchema } from "../models";
 
-interface IFormInput {
-  applicationType: string;
-  organizationName: string;
-  contactPersonName: string;
-  organizationEmail: string;
-  phoneNumber: string;
+interface MakePaymentForm {
+  handleNext: () => void | undefined;
 }
 
-const schema = yup.object({
-  applicationType: yup.string().required("Application type is required"),
-  organizationName: yup.string().required("Organization name is required"),
-  contactPersonName: yup.string().required("Contact person name is required"),
-  organizationEmail: yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: yup.string().required("Phone number is required"),
-});
-
-const MakePaymentForm: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInput>({
-    resolver: yupResolver(schema),
+const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
+  const { control, handleSubmit, watch } = useForm<IMakePaymentForm>({
+    resolver: yupResolver(makePaymentFormSchema),
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
     console.log(data);
+    handleNext();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <div className="form-group">
-        <label>Select Application type *</label>
-        <select {...register("applicationType")} className={errors.applicationType ? "error" : ""}>
-          <option value="">Select...</option>
-          <option value="Type1">Type1</option>
-          <option value="Type2">Type2</option>
-        </select>
-        {errors.applicationType && <p>{errors.applicationType.message}</p>}
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+      <div className="w-[40%]">
+        <CustomSelect
+          control={control as never}
+          name="applicationType"
+          label="Select Application type"
+          asterisk
+          placeholder=" "
+          options={data}
+        />
+        <div className="mb-[14px]" />
+        <CustomInput
+          label={"Payment Fee"}
+          name="paymentFee"
+          valueInput={watch("applicationType")}
+          plainText
+          control={control as never}
+          placeholder={"₦00.00"}
+        />
+        <div className="mt-[20px]" />
+        <div className={`bg-[#393737] h-[1px] w-4/4`} />
+        <div className="mb-[32px]" />
       </div>
 
-      <div className="form-group">
-        <label>Payment Fee</label>
-        <div className="bg-[#E4F0FF] h-10 flex justify-start items-center pl-[24px]">
-          <p className="text-[#000000] important">₦00.00</p>
-        </div>
+      <div className="w-[40%]">
+        <CustomInput name="organizationName" label={"Organization Name"} asterisk control={control as never} />
+        <div className="mb-[14px]" />
+        <CustomInput name="contactPersonName" label={"Contact Person Name"} asterisk control={control as never} />
+        <div className="mb-[14px]" />
+        <CustomInput name="organizationEmail" label={"Organization Email"} asterisk control={control as never} />
+        <div className="mb-[14px]" />
+        <CustomInput name="phoneNumber" label={"Phone No."} asterisk control={control as never} />
+        <div className="mb-[34px]" />
+        <CustomButton name="Make Payment" trailingIcon={<FaArrowRight />} />
       </div>
-
-      <div className="form-group">
-        <label>Organization Name *</label>
-        {/* <CustomInput register={...register("organizationName")} style={errors.organizationName ? "error" : ""} /> */}
-        <input type="text" {...register("organizationName")} className={errors.organizationName ? "error" : ""} />
-        {errors.organizationName && <p>{errors.organizationName.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label>Contact Person Name *</label>
-        <input type="text" {...register("contactPersonName")} className={errors.contactPersonName ? "error" : ""} />
-        {errors.contactPersonName && <p>{errors.contactPersonName.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label>Organization Email *</label>
-        <input type="email" {...register("organizationEmail")} className={errors.organizationEmail ? "error" : ""} />
-        {errors.organizationEmail && <p>{errors.organizationEmail.message}</p>}
-      </div>
-
-      <div className="form-group">
-        <label>Phone No. *</label>
-        <input type="text" {...register("phoneNumber")} className={errors.phoneNumber ? "error" : ""} />
-        {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-      </div>
-
-      <button type="submit" className="submit-btn">
-        Make Payment
-      </button>
     </form>
   );
 };

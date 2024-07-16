@@ -1,15 +1,17 @@
-// import "./App.css";
 import MakePaymentForm from "./components/MakePaymentForm";
 import StepIndicator from "./components/StepsIndicator";
 import VerificationForm from "./components/VerificationForm";
 import useStep from "./hooks/useStep";
-import "./styles/Indicators.css";
+// import "./styles/Indicators.css";
 import image from "./assets/banner-svg.svg";
 import Divider from "./components/Divider";
 import OTPInput from "react-otp-input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ScreenLoader from "./components/ScreenLoader";
+import RemitaFake from "./components/RemitaFake";
 
 function App() {
+  const [loading, setLoading] = useState("initial");
   const [otp, setOtp] = useState("");
   const [otpStep, setOtpStep] = useState(true);
 
@@ -20,8 +22,28 @@ function App() {
     "Fill form",
     "Upload Document",
   ]);
-  return (
-    <div className="app">
+
+  useEffect(() => {
+    if (loading === "loading") {
+      setTimeout(() => {
+        setLoading("success");
+        console.log("testing loading");
+        // handleNext();
+      }, 2000);
+    }
+  }, [loading]);
+
+  return loading === "loading" ? (
+    <ScreenLoader />
+  ) : loading === "success" ? (
+    <RemitaFake
+      handleNext={() => {
+        setLoading("initial");
+        handleNext();
+      }}
+    />
+  ) : (
+    <div>
       <div>
         <img src={image} />
       </div>
@@ -31,13 +53,18 @@ function App() {
           <StepIndicator handlePrevious={handlePrevious} step={step} totalSteps={totalSteps} indicators={indicators} />
         </div>
 
-        <Divider />
+        <Divider color="#12A53E" />
 
         <div>
           {step === 1 && (
             <div className="mt-[40px]">
-              <MakePaymentForm />
-              <button onClick={handleNext}>Next</button>
+              <MakePaymentForm
+                // handleNext={handleNext}
+                handleNext={() => {
+                  setLoading("loading");
+                  console.log("testing passing to the next stage");
+                }}
+              />
             </div>
           )}
           {step === 2 && (
