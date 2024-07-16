@@ -1,5 +1,5 @@
 interface Divider {
-  color?: string;
+  color: string;
 }
 
 const Divider = ({ color }: Divider) => {

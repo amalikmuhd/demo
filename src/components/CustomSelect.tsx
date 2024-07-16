@@ -37,8 +37,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
             disabled={plainText}
             className={
               plainText
-                ? "bg-[#E4F0FF] p-[12px] border border-[#E4F0FF] font-inter font-extrabold rounded-md text-base"
-                : "bg-[#F6F6F6] p-[12px] border border-gray-500 rounded-md outline-none focus:bg-white"
+                ? "bg-[#E4F0FF] p-[10px] border border-[#E4F0FF] font-inter font-extrabold rounded-md text-base"
+                : "bg-[#F6F6F6] p-[10px] border border-gray-200 rounded-md outline-none focus:bg-white"
             }
             value={value}
             onChange={onChange}

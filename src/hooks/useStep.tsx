@@ -17,7 +17,7 @@ const useStep = (stepNames: string[]) => {
     indicators.push(
       <div key={i} className="flex flex-col items-center">
         <div className="flex flex-row items-center">
-          <div className={`w-8 h-8 rounded-full border ${i <= step ? "bg-[green] " : "border-gray-300 bg-white"}`} />
+          <div className={`w-6 h-6 rounded-full border ${i <= step ? "bg-[green] " : "border-gray-300 bg-white"}`} />
 
           {i < totalSteps && <div className={`w-32 h-1 ${i < step ? "bg-[#ccc]" : "bg-[#ccc]"}`} />}
         </div>

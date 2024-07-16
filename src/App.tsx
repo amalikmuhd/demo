@@ -2,7 +2,6 @@ import MakePaymentForm from "./components/MakePaymentForm";
 import StepIndicator from "./components/StepsIndicator";
 import VerificationForm from "./components/VerificationForm";
 import useStep from "./hooks/useStep";
-// import "./styles/Indicators.css";
 import image from "./assets/banner-svg.svg";
 import Divider from "./components/Divider";
 import OTPInput from "react-otp-input";
@@ -48,8 +47,8 @@ function App() {
         <img src={image} />
       </div>
 
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="flex-1 flex flex-col justify-center items-center mt-[24px] mb-[24px]">
+      <div>
+        <div className="flex-1 flex flex-col justify-center items-center mt-[14px] mb-[14px]">
           <StepIndicator handlePrevious={handlePrevious} step={step} totalSteps={totalSteps} indicators={indicators} />
         </div>
 
@@ -57,18 +56,12 @@ function App() {
 
         <div>
           {step === 1 && (
-            <div className="mt-[40px]">
-              <MakePaymentForm
-                // handleNext={handleNext}
-                handleNext={() => {
-                  setLoading("loading");
-                  console.log("testing passing to the next stage");
-                }}
-              />
+            <div className="mt-[30px] w-[100%]">
+              <MakePaymentForm handleNext={() => setLoading("loading")} />
             </div>
           )}
           {step === 2 && (
-            <div className="mt-[40px]">
+            <div className="mt-[30px]">
               <VerificationForm />
               <button onClick={handleNext}>Next</button>
             </div>
@@ -76,7 +69,7 @@ function App() {
           {step === 3 && (
             <div>
               {otpStep ? (
-                <div className="mt-[40px]">
+                <div className="mt-[30px]">
                   <p>Please select a method to receive 6-digit OTP (One Time Password)</p>
 
                   <div className="flex flex-row gap-4 justify-center">
@@ -95,7 +88,7 @@ function App() {
                   </div>
                 </div>
               ) : (
-                <div className="mt-[40px]">
+                <div className="mt-[30px]">
                   <p>Please select a method to receive 6-digit OTP (One Time Password)</p>
                   <p className="mb-4">The OTP has been sent to you. Please enter the 6-digit OTP</p>
                   <OTPInput
@@ -130,7 +123,7 @@ function App() {
             </div>
           )}
           {step === 4 && (
-            <div className="mt-[40px]">
+            <div className="mt-[30px]">
               <h1>Step 4</h1>
               <button onClick={handleNext}>Next</button>
             </div>
@@ -145,33 +138,6 @@ function App() {
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="p-12 shadow-md rounded-2xl bg-white mx-auto border-solid border-2 border-gray-100 mb-8">
-  //     <div className="flex-1 flex flex-col justify-center items-center">
-  //       <StepIndicator handlePrevious={handlePrevious} step={step} totalSteps={totalSteps} indicators={indicators} />
-
-  //       {step === 1 && (
-  //         <div className="mt-[40px]">
-  //           <h1>Step 1</h1>
-  //           <button onClick={handleNext}>Next</button>
-  //         </div>
-  //       )}
-  //       {step === 2 && (
-  //         <div className="mt-[40px]">
-  //           <h1>Step 2</h1>
-  //           <button onClick={handleNext}>Next 2</button>
-  //         </div>
-  //       )}
-  //       {step === 3 && (
-  //         <div className="mt-[40px]">
-  //           <h1>Step 3</h1>
-  //           <button onClick={handlePrevious}>Done</button>
-  //         </div>
-  //       )}
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default App;

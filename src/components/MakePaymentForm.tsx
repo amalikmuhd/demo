@@ -34,7 +34,7 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
           placeholder=" "
           options={data}
         />
-        <div className="mb-[14px]" />
+        <div className="mb-[10px]" />
         <CustomInput
           label={"Payment Fee"}
           name="paymentFee"
@@ -43,20 +43,20 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
           control={control as never}
           placeholder={"₦00.00"}
         />
-        <div className="mt-[20px]" />
-        <div className={`bg-[#393737] h-[1px] w-4/4`} />
-        <div className="mb-[32px]" />
+        <div className="mt-[10px]" />
+        <div className={`bg-gray-400 h-[1px] w-4/4`} />
+        <div className="mb-[16px]" />
       </div>
 
       <div className="w-[40%]">
         <CustomInput name="organizationName" label={"Organization Name"} asterisk control={control as never} />
-        <div className="mb-[14px]" />
+        <div className="mb-[10px]" />
         <CustomInput name="contactPersonName" label={"Contact Person Name"} asterisk control={control as never} />
-        <div className="mb-[14px]" />
+        <div className="mb-[10px]" />
         <CustomInput name="organizationEmail" label={"Organization Email"} asterisk control={control as never} />
-        <div className="mb-[14px]" />
+        <div className="mb-[10px]" />
         <CustomInput name="phoneNumber" label={"Phone No."} asterisk control={control as never} />
-        <div className="mb-[34px]" />
+        <div className="mb-[24px]" />
         <CustomButton name="Make Payment" trailingIcon={<FaArrowRight />} />
       </div>
     </form>
