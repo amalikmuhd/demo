@@ -35,7 +35,7 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
   const [level, setLevel] = useState("initial");
 
   const [otp, setOtp] = useState("");
-  const [otpStep, setOtpStep] = useState(true);
+  // const [otpStep, setOtpStep] = useState(true);
 
   return level === "initial" ? (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">

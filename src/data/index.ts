@@ -71,7 +71,6 @@ const maritalStatusData = [
     label: "Separated",
     value: "₦10,000",
   },
-
   {
     label: "Engaged",
     value: "₦10,000",
