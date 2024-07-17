@@ -28,7 +28,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       name={name}
       rules={rules}
       render={({ field: { onBlur, onChange, value = "" }, fieldState: { error } }) => (
-        <div className="flex flex-col justify- border-red-100 bottom-1">
+        <div className="flex flex-col border-red-100 bottom-1 flex-1">
           <div className="flex flex-row items-start gap-1">
             <label className="text-left mb-[8px] font-inter font-normal text-sm">{label}</label>
             {asterisk && <label className="text-left font-inter font-normal text-sm text-[#DD1D1D]">*</label>}

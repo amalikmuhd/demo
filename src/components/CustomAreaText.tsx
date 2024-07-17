@@ -1,6 +1,6 @@
 import { Control, Controller, FieldValues, RegisterOptions } from "react-hook-form";
 
-interface CustomInput {
+interface CustomAreaTextProps {
   style?: String;
   control: Control<FieldValues, unknown>;
   rules?: Omit<RegisterOptions<FieldValues, string>, "disabled" | "valueAsNumber" | "valueAsDate" | "setValueAs">;
@@ -10,11 +10,9 @@ interface CustomInput {
   plainText?: boolean;
   asterisk?: boolean;
   valueInput?: string;
-  type?: React.HTMLInputTypeAttribute | undefined;
-  plainStyle?: string;
 }
 
-const CustomInput = ({
+const CustomAreaText = ({
   control,
   name,
   label,
@@ -22,31 +20,26 @@ const CustomInput = ({
   plainText = false,
   asterisk = false,
   valueInput,
-  type = "text",
-  plainStyle,
-}: CustomInput) => {
+}: CustomAreaTextProps) => {
   return (
     <Controller
       control={control}
       name={name}
       render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-        <div className="flex flex-col border-red-100 bottom-1 flex-1">
+        <div className="flex flex-col border-red-100 bottom-1 justify-stretch flex-1">
           <div className="flex flex-row gap-1">
             <label className="text-left mb-[8px] font-inter font-normal text-sm">{label}</label>
             {asterisk && <label className="text-left font-inter font-normal text-sm text-[#DD1D1D]">*</label>}
           </div>
-          <input
-            type={type}
+          <textarea
             disabled={plainText}
             placeholder={placeholder}
             className={
               plainText
-                ? `${
-                    plainStyle || "bg-[#E4F0FF] border border-[#E4F0FF] rounded-md font-extrabold "
-                  } p-[10px]  font-inter text-base`
-                : `bg-[#F6F6F6] p-[10px] border border-gray-300 rounded-md outline-none focus:bg-white`
+                ? `bg-[#E4F0FF] p-[10px] border border-[#E4F0FF] font-inter font-extrabold rounded-md text-base`
+                : `bg-[#F6F6F6] p-[10px] py-[50px] border border-gray-300 rounded-md outline-none focus:bg-white`
             }
-            value={valueInput || value?.toLowerCase()}
+            value={valueInput || value}
             onChange={(text) => onChange(text)}
             onBlur={() => onBlur()}
           />
@@ -57,4 +50,4 @@ const CustomInput = ({
   );
 };
 
-export default CustomInput;
+export default CustomAreaText;

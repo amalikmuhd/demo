@@ -1,66 +1,55 @@
-// src/components/Form.tsx
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import "../styles/MakePaymentForm.css"; // You'll create this CSS file for styling
+import CustomInput from "./CustomInput";
+import CustomButton from "./CustomButton";
+import { FaArrowRight } from "react-icons/fa6";
+import { IMakePaymentForm } from "../types";
+import { makePaymentFormSchema } from "../models";
+import { IoMdCheckmarkCircle } from "react-icons/io";
 
-interface IFormInput {
-  applicationType: string;
-  organizationName: string;
-  contactPersonName: string;
-  organizationEmail: string;
-  phoneNumber: string;
+interface MakePaymentForm {
+  handleNext: () => void | undefined;
 }
 
-const schema = yup.object({
-  applicationType: yup.string().required("Application type is required"),
-  organizationName: yup.string().required("Organization name is required"),
-  contactPersonName: yup.string().required("Contact person name is required"),
-  organizationEmail: yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: yup.string().required("Phone number is required"),
-});
-
-const VerificationForm: React.FC = () => {
+const VerificationForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
   const {
-    register,
+    control,
     handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInput>({
-    resolver: yupResolver(schema),
+    formState: { isValid },
+  } = useForm<IMakePaymentForm>({
+    resolver: yupResolver(makePaymentFormSchema),
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
     console.log(data);
+    handleNext();
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <div className="form-group">
-        <label>1. Enter RRR (Check your payment receipt) </label>
-        <div className="flex flex-row">
-          <input type="text" {...register("contactPersonName")} className={errors.contactPersonName ? "error" : ""} />
-
-          <div onClick={() => {}} className="ml-4 w-60 bg-slate-400 text-center">
-            Payment confirmed
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+      <div className="w-[40%]">
+        <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
+          <label className="text-left mb-[8px] font-inter font-semibold text-[18px]">
+            Verification of NIN Credentials
+          </label>
+        </div>
+        <div className="flex flex-row items-center gap-4">
+          <CustomInput name="nin" label={"Enter NIN "} control={control as never} />
+          <div className="flex-[0.5]">
+            <CustomButton
+              paddingVertical={"py-[13px]"}
+              name={isValid ? "Check" : "NIN confirmed"}
+              style={`mt-[26px] ${!isValid && "bg-[#EDEDED]"}`}
+              textColor={`${isValid && "text-black"}`}
+              trailingIcon={!isValid && <IoMdCheckmarkCircle className="text-[#12A53E]" />}
+            />
           </div>
         </div>
-      </div>
 
-      <div className="form-group">
-        <label>2. Enter NIN</label>
-        <div className="flex flex-row">
-          <input type="text" {...register("contactPersonName")} className={errors.contactPersonName ? "error" : ""} />
-          <div onClick={() => {}} className="ml-4 w-60 bg-slate-400 text-center">
-            NIN confirmed
-          </div>
-        </div>
-        {errors.contactPersonName && <p>{errors.contactPersonName.message}</p>}
+        <div className="mt-[20px]" />
+        <CustomButton disabled={isValid} name="Continue" trailingIcon={<FaArrowRight />} onClick={handleNext} />
       </div>
-      {/* 
-      <button type="submit" className="submit-btn">
-        Make Payment
-      </button> */}
     </form>
   );
 };

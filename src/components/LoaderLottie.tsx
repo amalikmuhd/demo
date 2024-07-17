@@ -1,16 +1,17 @@
-// import "./styles.css";
 import Lottie from "react-lottie";
-import animationData from "../lotties/loader.json";
+import animationData from "../../public/loader.json";
 
-// interface LoaderLottieProps {
-//   icon?: any;
-// }
+interface LoaderLottieProps {
+  height?: number;
+  width?: number;
+  icon?: object;
+}
 
-export default function LoaderLottie() {
+export default function LoaderLottie({ height = 69, width = 69, icon }: LoaderLottieProps) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: icon || animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -18,7 +19,7 @@ export default function LoaderLottie() {
 
   return (
     <div>
-      <Lottie options={defaultOptions} height={69} width={69} />
+      <Lottie options={defaultOptions} height={height} width={width} />
     </div>
   );
 }
