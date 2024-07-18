@@ -31,22 +31,3 @@ export default function Application() {
     </div>
   );
 }
-
-const data = [
-  {
-    header: "FOREIGN BANK ACCOUNTS",
-    title: "Get a global bank account",
-    subTitle: "Get a bank account in just minutes. Receive and access your global payments whenever you want to.",
-  },
-  {
-    header: "CURRENCY EXCHANGE",
-    title: "Convert money at the best rate",
-    subTitle:
-      "Effortlessly exchange major world currencies at the best rates. Convert money from local to foreign and back in a flash.",
-  },
-  {
-    header: "VIRTUAL CARDS",
-    title: "Shop and spend globally",
-    subTitle: "Make international payments with a virtual debit card that just works.",
-  },
-];

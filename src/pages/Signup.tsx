@@ -18,6 +18,7 @@ const Signup: React.FC = () => {
 
   const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
     console.log(data);
+    setLoading(false);
     navigation("/success");
   };
   const navigation = useNavigate();

@@ -17,6 +17,7 @@ const UploadDocument: React.FC<MakePaymentForm> = ({ handleNext }) => {
 
   const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
     console.log(data);
+    setLoading(false);
     handleNext();
   };
 

@@ -4,7 +4,7 @@ import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
 import CustomSelect from "./CustomSelect";
-import { data, educationData, genderData, maritalStatusData, religionData, titleData } from "../data";
+import { educationData, genderData, maritalStatusData, religionData } from "../data";
 import { IMakePaymentForm } from "../types";
 import CustomAreaText from "./CustomAreaText";
 import CustomFileInput from "./CustomFileInput";
@@ -14,7 +14,7 @@ interface FillFormForm {
 }
 
 const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
-  const { control, handleSubmit, watch } = useForm<IMakePaymentForm>({
+  const { control, handleSubmit } = useForm<IMakePaymentForm>({
     // resolver: yupResolver(makePaymentFormSchema),
   });
 
