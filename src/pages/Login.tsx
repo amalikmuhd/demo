@@ -37,7 +37,7 @@ const Login: React.FC = () => {
             <CustomInput name="firstName" label={"Password"} asterisk control={control as never} />
           </div>
           <div className="my-[40px]" />
-          <CustomButton name="Log in" trailingIcon={<FaArrowRight />} />
+          <CustomButton name="Log in" trailingIcon={<FaArrowRight />} onClick={() => navigation("/dashboard")} />
 
           <div className="flex flex-row justify-center items-center gap-1  mt-[16px]">
             <label className="font-inter font-normal text-[14px]">Don’t have an account?</label>
