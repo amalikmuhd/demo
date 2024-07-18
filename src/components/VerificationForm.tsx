@@ -61,7 +61,7 @@ const VerificationForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
         </div>
 
         <div className="mt-[40px]" />
-        <CustomButton disabled={!isValid} name="Continue" trailingIcon={<FaArrowRight />} onClick={handleNext} />
+        <CustomButton disabled={isValid} name="Continue" trailingIcon={<FaArrowRight />} onClick={handleNext} />
       </div>
     </form>
   );

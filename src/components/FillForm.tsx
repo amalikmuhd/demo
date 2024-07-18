@@ -26,56 +26,42 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
       <div className="w-[60%]">
-        <div className="flex flex-row">
-          <CustomSelect
-            control={control as never}
-            name="applicationType"
-            label="Select Application type"
-            asterisk
-            placeholder=" "
-            options={data}
-          />
-          <div className="flex-1" />
+        <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
+          <label className="text-left mb-[30px] font-inter font-semibold text-[18px]">
+            Fill the form below carefully and insure you provide accurate information:
+          </label>
         </div>
-        <div className="mb-[10px]" />
-        <div className="flex flex-row">
-          <CustomInput
-            label={"Payment Fee"}
-            name="paymentFee"
-            valueInput={watch("applicationType")}
-            plainText
-            control={control as never}
-            placeholder={"₦00.00"}
-          />
-          <div className="flex-1" />
-        </div>
-        <div className="flex-1" />
-        <div className="mt-[40px]" />
-        <div className={`bg-gray-400 h-[1px] w-4/4`} />
-        <div className="mb-[40px]" />
-        {/* <div className="mt-[10px]" />
-        <div className={`bg-gray-400 h-[1px] w-4/4`} />
-        <div className="mb-[16px]" /> */}
-      </div>
-
-      <div className="w-[60%]">
         {/* step 1 */}
         <>
-          <div className="flex flex-row justify-between gap-6">
+          <div className="flex flex-row justify-between gap-6 mt-[16px]">
+            <CustomInput name="name" label={"Name of Organisation"} control={control as never} />
+            <CustomInput name="children" label={"Children"} control={control as never} />
+          </div>
+          <div className="flex flex-row justify-between gap-6 mt-[16px]">
+            <CustomInput name="email" label={"Organization Email"} control={control as never} />
+            <CustomInput name="phone" label={"Phone No."} control={control as never} />
+          </div>
+          <div className="flex flex-row justify-between gap-6 mt-[16px]">
+            <CustomInput name="rc" label={"Registration Number (RC)"} asterisk control={control as never} />
             <CustomSelect
               control={control as never}
-              name="title"
-              label="Title"
+              name="nationRegistration"
+              label="Nation of Registration"
               asterisk
               placeholder=" "
-              options={titleData}
+              options={genderData}
             />
-            <CustomInput name="firstName" label={"First Name"} asterisk control={control as never} />
           </div>
-
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
-            <CustomInput name="middleName" label={"Middle Name"} control={control as never} />
-            <CustomInput name="lastName" label={"Last Name"} asterisk control={control as never} />
+            <CustomSelect
+              control={control as never}
+              name="localGovernment"
+              label="Local Government"
+              asterisk
+              placeholder=" "
+              options={genderData}
+            />
+            <div className="flex-1" />
           </div>
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
@@ -84,6 +70,9 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
 
         {/* step 2 */}
         <>
+          <div className="flex flex-row items-start gap-1  mt-[16px]">
+            <label className="text-left mb-[30px] font-inter font-medium text-[14px]">Contact Person</label>
+          </div>
           <div className="flex flex-row justify-between gap-6">
             <CustomSelect
               control={control as never}
@@ -317,19 +306,19 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
             <CustomFileInput
               name="signature"
               asterisk
-              label={"Applicant Signature:"}
+              label={"Representative Signature:"}
               control={control as never}
               tag="Ensure signature is clearly visible"
             />
           </div>
 
           <div className="mt-[40px]" />
-          <div className={`bg-gray-400 h-[1px] w-4/4`} />
+          {/* <div className={`bg-gray-400 h-[1px] w-4/4`} /> */}
           <div className="mb-[40px]" />
         </>
 
         {/* step 13 */}
-        <>
+        {/* <>
           <div className="flex flex-row justify-between gap-6 mt-[16px] mb-[40px]">
             <div className="flex flex-row items-start gap-1 mb-[16px]">
               <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/40">
@@ -343,7 +332,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
               </label>
             </div>
           </div>
-        </>
+        </> */}
 
         <CustomButton name="Submit form" trailingIcon={<FaArrowRight />} />
         <div className="mb-[40px]" />
