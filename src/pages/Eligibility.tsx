@@ -3,9 +3,11 @@ import CustomButton from "../components/CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
 import { AppBar } from "../components/AppBar";
 import Header from "../components/Header";
+import { useState } from "react";
 
 export function Eligibility() {
   const navigation = useNavigate();
+  const [step, setStep] = useState(false);
   return (
     <div>
       <Header />
@@ -78,7 +80,7 @@ export function Eligibility() {
               </div>
 
               <div className="flex flex-row place-items-start my-[30px]">
-                <input type="checkbox" className="mr-4 w-[30px] h-[30px]" />
+                <input type="checkbox" className="mr-4 w-[30px] h-[30px]" onChange={() => setStep(!step)} />
                 <p className="text-left font-inter font-normal text-[16px]">
                   I hereby agree that I have read and am ready to comply with all the criteria for application listed
                   above and wish to proceed to completing the application.
@@ -86,6 +88,7 @@ export function Eligibility() {
               </div>
 
               <CustomButton
+                disabled={!step}
                 name="Yes, I agree and wish to proceed"
                 trailingIcon={<FaArrowRight />}
                 onClick={() => navigation("/login")}
