@@ -44,9 +44,9 @@ const Signup: React.FC = () => {
     //   password: data.password,
     // });
     registerUser.mutate({
-      email: data.email,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      email: data.email.toLowerCase(),
+      firstName: data.firstName.toLowerCase(),
+      lastName: data.lastName.toLowerCase(),
       phoneNumber: data.phoneNumber,
       password: data.password,
     });
@@ -63,7 +63,6 @@ const Signup: React.FC = () => {
 
     onSuccess: (data) => {
       if (data.data.message === "success") {
-        console.log(data.data.data, "data.data");
         localStorage.setItem("token", JSON.stringify(data.data.data));
         navigation("/success", { state: { type: params.state.type } });
       }
@@ -100,14 +99,14 @@ const Signup: React.FC = () => {
               <div className="my-[14px]" />
               <CustomInput
                 name="lastName"
-                label={`${params.state.type === "Individual" ? "Last" : "Contact Person"} Name`}
+                label={`${params.state.type === "Individual" ? "Last" : ""} Name`}
                 asterisk
                 control={control as never}
               />
               <div className="my-[14px]" />
               <CustomInput
                 name="email"
-                label={`${params.state.type === "Individual" ? "" : "Organization"} Email`}
+                label={`${params.state.type === "Individual" ? "" : ""} Email`}
                 asterisk
                 control={control as never}
               />

@@ -82,7 +82,7 @@ function Home() {
               </div>
             </>
             <div className="flex flex-col justify-center items-center mt-[160px]">
-              <label className="text-left font-inter font-normal text-[16px]">
+              <label className="text-left font-inter font-normal text-[12px] text-black/30">
                 @AGIS 2024 &bull; Powered by Abuja Geographic Information Systems
               </label>
             </div>

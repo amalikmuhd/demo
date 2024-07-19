@@ -34,7 +34,7 @@ function Dashboard() {
       <div>
         <img src={image} />
         <div className="absolute top-0 right-2 mr-12 mt-10 flex flex-row items-center w-[250px] gap-2">
-          <p className="font-inter font-semibold text-[14px]">Welcome {`${data?.data?.data?.firstName || ""}`}</p>
+          <p className="font-inter font-semibold text-[14px]">Welcome {`${data?.data?.data?.lastName || ""}`}</p>
           <img
             src={profile}
             className="w-[25%]"
