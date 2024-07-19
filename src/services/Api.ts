@@ -2,16 +2,16 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://koyeb-db-preview-app-aoomle.koyeb.app/api/",
+  baseURL: "https://koyeb-db-preview-app-aoomle.koyeb.app/api/v1/",
 });
 
 Api.interceptors.request.use(
   async (config) => {
-    // const storage = await load("token");
-    // // console.log(storage, "storage");
-    // if (storage) {
-    //   config.headers.Authorization = `Bearer ${storage.token}`;
-    // }
+    const token = JSON.parse(localStorage.getItem("token") as never);
+    console.log(token, "storage");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

@@ -1,3 +1,9 @@
+export interface IFillForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+}
 export interface IMakePaymentForm {
   applicationType: string;
   organizationName: string;

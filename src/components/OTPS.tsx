@@ -22,10 +22,6 @@ export const email = yup.object({
   email: yup.string().email("email is required").required("Input is required"),
 });
 
-interface Props2 {
-  otp: string;
-}
-
 export const verify = yup.object({
   otp: yup.string().required("otp is required"),
 });

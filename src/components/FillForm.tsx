@@ -7,34 +7,44 @@ import CustomSelect from "./CustomSelect";
 import {
   councilData,
   districtData,
-  educationData,
+  // educationData,
   genderData,
   landuseData,
-  maritalStatusData,
+  // maritalStatusData,
   purposeData,
-  religionData,
+  // religionData,
   titleData,
 } from "../data";
-import { IMakePaymentForm } from "../types";
+import { IFillForm } from "../types";
 import CustomAreaText from "./CustomAreaText";
 import CustomFileInput from "./CustomFileInput";
-import { useLocation } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+// import { useLocation } from "react-router-dom";
+// import { useQuery } from "@tanstack/react-query";
 
 interface FillFormForm {
   handleNext: () => void | undefined;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phoneNumber?: string;
 }
 
-const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
-  const params = useLocation();
+const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, email, phoneNumber }) => {
+  // const params = useLocation();
 
   //  const query = useQuery
 
-  const { control, handleSubmit } = useForm<IMakePaymentForm>({
+  const { control, handleSubmit } = useForm<IFillForm>({
+    defaultValues: {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+    },
     // resolver: yupResolver(makePaymentFormSchema),
   });
 
-  const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
+  const onSubmit: SubmitHandler<IFillForm> = (data) => {
     console.log(data);
     handleNext();
   };
@@ -52,16 +62,16 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
             <CustomInput
               plainText
-              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
-              name="name2"
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6] text-black/30"
+              name="firstName"
               label={"Name of Organisation"}
               asterisk
               control={control as never}
             />
             <CustomInput
-              name="email2"
+              name="email"
               plainText
-              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6] text-black/30"
               label={"Organization Email"}
               asterisk
               control={control as never}
@@ -69,17 +79,17 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
             <CustomInput
-              name="email2"
+              name="phoneNumber"
               plainText
-              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6] text-black/30"
               label={"Phone No."}
               asterisk
               control={control as never}
             />
             <CustomInput
-              name="phone2"
+              name="lastName"
               plainText
-              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6] text-black/30"
               label={"Contact Person Name"}
               asterisk
               control={control as never}
@@ -249,7 +259,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
             <CustomInput name="facsimile" label={"Facsimile"} control={control as never} />
-            <CustomInput name="email" label={"Email"} asterisk control={control as never} />
+            <CustomInput name="emailss" label={"Email"} asterisk control={control as never} />
           </div>
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />

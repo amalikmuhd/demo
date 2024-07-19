@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Success from "./pages/Success";
+import { Toaster } from "sonner";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -13,6 +14,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster position="top-right" />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -9,8 +9,17 @@ import UploadDocument from "../components/UploadDocument";
 import Finish from "../components/Finish";
 import FillForm from "../components/FillForm";
 import OTPS from "../components/OTPS";
+import { useQuery } from "@tanstack/react-query";
+import { userProfile } from "../services/Endpoints";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["repoData"],
+    queryFn: () => userProfile(),
+  });
+
+  const navigation = useNavigate();
   const { indicators, step, handleNext, totalSteps, handlePrevious } = useStep([
     "Make Payment",
     "Verification",
@@ -25,8 +34,15 @@ function Dashboard() {
       <div>
         <img src={image} />
         <div className="absolute top-0 right-2 mr-12 mt-10 flex flex-row items-center w-[200px] gap-2">
-          <p className="font-inter font-semibold text-[14px]">Welcome {`${"Malik"}`}</p>
-          <img src={profile} className="w-[25%]" />
+          <p className="font-inter font-semibold text-[14px]">Welcome {`${data?.data?.data?.firstName}`}</p>
+          <img
+            src={profile}
+            className="w-[25%]"
+            onClick={() => {
+              localStorage.clear();
+              navigation("/");
+            }}
+          />
         </div>
       </div>
 
@@ -51,7 +67,13 @@ function Dashboard() {
           {step === 3 && <OTPS handleNext={() => handleNext()} />}
           {step === 4 && (
             <div className="mt-[30px]">
-              <FillForm handleNext={() => handleNext()} />
+              <FillForm
+                handleNext={() => handleNext()}
+                firstName={data?.data?.data?.firstName}
+                lastName={data?.data?.data?.lastName}
+                email={data?.data?.data?.email}
+                phoneNumber={data?.data?.data?.phoneNumber}
+              />
             </div>
           )}
           {step === 5 && (

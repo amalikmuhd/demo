@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
-import { IMakePaymentForm } from "../types";
 
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { VerificationSchema, VerificationSchema2 } from "../models";
