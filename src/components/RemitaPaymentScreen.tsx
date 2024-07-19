@@ -9,8 +9,10 @@ interface RemitaFakeProps {
 const RemitaPaymentScreen = ({ handleNext }: RemitaFakeProps) => {
   return (
     <div className="fixed top-0 left-0 z-50 bg-white w-[100% h-[100%]]">
-      <img src={remita} className="w-[100%] h-[20%] object-cover" />
-      <div className="w-[100%] flex flex-row justify-center h-[20%]">
+      <div className="w-[100%] flex flex-row justify-center h-[50%]">
+        <img src={remita} className="w-[100%] h-[20%] object-cover" />
+      </div>
+      <div className="w-[100%] flex flex-row justify-center h-[50%]">
         <div className="w-[60%] flex justify-center items-center gap-2 mt-2">
           <CustomButton
             name={"SUBMIT"}
