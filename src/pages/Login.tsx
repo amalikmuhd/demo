@@ -77,7 +77,14 @@ const Login: React.FC = () => {
               control={control as never}
             />
             <div className="my-[14px]" />
-            <CustomInput name="password" label={"Password"} asterisk control={control as never} />
+            <CustomInput
+              type="password"
+              name="password"
+              label={"Password"}
+              asterisk
+              control={control as never}
+              trailingIcon
+            />
           </div>
           <div className="my-[40px]" />
           <CustomButton

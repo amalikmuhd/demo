@@ -9,9 +9,15 @@ import UploadDocument from "../components/UploadDocument";
 import Finish from "../components/Finish";
 import FillForm from "../components/FillForm";
 import OTPS from "../components/OTPS";
-import { useQuery } from "@tanstack/react-query";
-import { userProfile } from "../services/Endpoints";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { successUser, userProfile } from "../services/Endpoints";
 import { useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
+import { toast } from "sonner";
+
+interface ErrorResponse {
+  message: string;
+}
 
 function Dashboard() {
   const { data } = useQuery({
@@ -28,6 +34,22 @@ function Dashboard() {
     "Upload Document",
     "",
   ]);
+
+  const sendSuccess = useMutation({
+    mutationFn: (email: string) => {
+      return successUser(email);
+    },
+
+    onError: (error: AxiosError<ErrorResponse>) => {
+      toast.error(error.response?.data.message);
+    },
+
+    onSuccess: (data) => {
+      if (data.data.message === "success") {
+        navigation("/");
+      }
+    },
+  });
 
   return (
     <div>
@@ -83,7 +105,7 @@ function Dashboard() {
           )}
           {step === 6 && (
             <div className="mt-[40px]">
-              <Finish handleNext={() => {}} />
+              <Finish handleNext={() => sendSuccess.mutate(data?.data?.data?.email)} />
             </div>
           )}
         </div>
