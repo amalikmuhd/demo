@@ -1,4 +1,5 @@
 import image from "/banner.png";
+import profile from "/profile.png";
 import MakePaymentForm from "../components/MakePaymentForm";
 import StepIndicator from "../components/StepsIndicator";
 import VerificationForm from "../components/VerificationForm";
@@ -23,6 +24,10 @@ function Dashboard() {
     <div>
       <div>
         <img src={image} />
+        <div className="absolute top-0 right-2 mr-12 mt-10 flex flex-row items-center w-[200px] gap-2">
+          <p className="font-inter font-semibold text-[14px]">Welcome {`${"Malik"}`}</p>
+          <img src={profile} className="w-[25%]" />
+        </div>
       </div>
 
       <div>

@@ -1,33 +1,47 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
-import { IMakePaymentForm } from "../types";
-import { makePaymentFormSchema } from "../models";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import sms from "/sms.png";
-import email from "/email.png";
+import emailIcon from "/email.png";
 import IconSelector from "./shared/IconSelectior";
 import OTPInput from "react-otp-input";
-
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 interface MakePaymentForm {
   handleNext: () => void | undefined;
 }
+
+interface Props {
+  email: string;
+}
+
+export const email = yup.object({
+  email: yup.string().email("email is required").required("Input is required"),
+});
+
+interface Props2 {
+  otp: string;
+}
+
+export const verify = yup.object({
+  otp: yup.string().required("otp is required"),
+});
 
 const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
   const {
     control,
     handleSubmit,
-    formState: { isValid },
-  } = useForm<IMakePaymentForm>({
-    resolver: yupResolver(makePaymentFormSchema),
+    formState: { errors },
+  } = useForm<Props>({
+    resolver: yupResolver(email),
   });
 
-  const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
+  const onSubmit: SubmitHandler<Props> = (data) => {
     console.log(data);
-    handleNext();
+    setLevel("verifying");
   };
 
   const [check, setCheck] = useState(0);
@@ -38,7 +52,7 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
   // const [otpStep, setOtpStep] = useState(true);
 
   return level === "initial" ? (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-[40%]">
         <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
           <label className="text-left mb-[8px] font-inter font-semibold text-[18px]">
@@ -53,7 +67,7 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
               trailingIcon={<IoMdCheckmarkCircle className={check === 1 ? "text-white" : "text-[#DFFFE9]"} />}
               onClick={() => setCheck(1)}
               label="Email OTP"
-              src={email}
+              src={emailIcon}
             />
             <IconSelector
               className={`flex flex-col p-[18px] ${check === 2 ? "bg-[#12A53E]" : "bg-[#DFFFE9]"}`}
@@ -66,10 +80,10 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
         </div>
 
         {check !== 0 && (
-          <>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-row items-center gap-4">
               <CustomInput
-                name="nin"
+                name="email"
                 label={`${check === 1 ? "Enter Email" : check === 2 ? "Enter Phone Number" : ""}`}
                 control={control as never}
               />
@@ -77,17 +91,17 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
 
             <div className="mt-[20px]" />
             <CustomButton
-              disabled={isValid}
+              disabled={errors.email ? true : false}
               name="Send OTP"
               trailingIcon={<FaArrowRight />}
               onClick={() => setLevel("verifying")}
             />
-          </>
+          </form>
         )}
       </div>
-    </form>
+    </div>
   ) : level === "verifying" ? (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-[40%]">
         <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
           <label className="text-left mb-[8px] font-inter font-semibold text-[18px]">
@@ -103,6 +117,7 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
         <div className="w-[50%]">
           <div className="flex flex-row justify-between gap-10 mb-[20px]">
             <OTPInput
+              // {...register}
               value={otp}
               onChange={setOtp}
               numInputs={6}
@@ -121,17 +136,12 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
         </div>
 
         <div className="mt-[20px]" />
-        <CustomButton
-          disabled={isValid}
-          name="Verify"
-          trailingIcon={<FaArrowRight />}
-          onClick={() => setLevel("success")}
-        />
+        <CustomButton name="Verify" trailingIcon={<FaArrowRight />} onClick={() => setLevel("success")} />
         <p className="mt-[10px]">Resend OTP?</p>
       </div>
-    </form>
+    </div>
   ) : level === "success" ? (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="w-[40%]">
         <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
           <label className="text-left mb-[8px] font-inter font-semibold text-[18px]">
@@ -165,15 +175,10 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
         </div>
 
         <div className="mt-[20px]" />
-        <CustomButton
-          disabled={isValid}
-          name="Proceed to Fill form"
-          trailingIcon={<FaArrowRight />}
-          onClick={handleNext}
-        />
+        <CustomButton name="Proceed to Fill form" trailingIcon={<FaArrowRight />} onClick={handleNext} />
         <p className="mt-[10px] text-black/30">Resend OTP?</p>
       </div>
-    </form>
+    </div>
   ) : null;
 };
 

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
 import { AppBar } from "../components/AppBar";
@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 export function Eligibility() {
+  const params = useLocation();
   const navigation = useNavigate();
   const [step, setStep] = useState(false);
   return (
@@ -15,16 +16,18 @@ export function Eligibility() {
       <div>
         <div className="flex flex-col items-center">
           <div className="w-[55%]">
-            <AppBar onClick={() => navigation("/")} />
+            <AppBar onClick={() => navigation("/")} title="" />
 
             <>
               <div className="flex flex-col justify-center items-center my-[40px]">
-                <label className="text-left font-inter font-normal text-[16px]">Eligibility Criteria</label>
+                <label className="text-left font-inter font-normal text-[16px]">{}Eligibility Criteria</label>
               </div>
 
               <div className="flex flex-row items-start gap-1 mb-[16px]">
                 <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/50">
-                  <p className="text-[#000000] font-inter font-semibold mb-2">Individual Application</p>
+                  <p className="text-[#000000] font-inter font-semibold mb-2">
+                    {params.state.type === "Individual" ? "Individual Application" : "Organization Application"}
+                  </p>
                   <p>1. Obtaining of new application forms from AGIS office or download from AGIS website;</p>
                   <p>2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.</p>
                   <p>3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.</p>
@@ -39,25 +42,71 @@ export function Eligibility() {
                   </p>
                   <p>5) Obtain Acknowledgement Form for keeps.</p>
 
-                  <p className="mt-4">i) New Application Form properly filled,</p>
-                  <p>ii) Tax Clearance Certificate for Individuals & Corporate bodies,</p>
-                  <p>iii) CAC form C07,</p>
-                  <p>iv) Photocopy of receipt,</p>
-                  <p>v) Two Passport size photographs and</p>
-                  <p>
-                    vi) Acceptable means of identification (driver’s license, National ID or International passport)
-                  </p>
-                  <p>5) Obtain Acknowledgement Form for keeps.</p>
-
-                  <p className="mt-4">i) New Application Form properly filled,</p>
-                  <p>ii) Tax Clearance Certificate for Individuals & Corporate bodies,</p>
-                  <p>iii) CAC form C07,</p>
-                  <p>iv) Photocopy of receipt,</p>
-                  <p>v) Two Passport size photographs and</p>
-                  <p>
-                    vi) Acceptable means of identification (driver’s license, National ID or International passport)
-                  </p>
-                  <p>5) Obtain Acknowledgement Form for keeps.</p>
+                  {params.state.type === "Individual" ? (
+                    <ul className="ml-4 mt-4">
+                      <li className="list-disc">Eligibility Guideline:</li>
+                      <li className="list-disc">Applicants must be individuals.</li>
+                      <li className="list-disc">
+                        Land applied for must be for specific purposes listed in the document.
+                      </li>
+                      <li className="list-disc">
+                        Personal details like name, gender, date of birth, occupation, nationality, etc., must be
+                        provided.
+                      </li>
+                      <li className="list-disc">
+                        A preferred location and required plot size must be selected from the provided list.
+                      </li>
+                      <li className="list-disc">
+                        Different document submission requirements exist based on application type (PRIV, RELO, REST).
+                      </li>
+                      <li className="list-disc">​Statement of Agreement</li>
+                      <li className="list-disc">Applicants confirm accuracy of preferred location and plot size..</li>
+                      <li className="list-disc">
+                        False information provision is punishable and may lead to revocation of Certificate of
+                        Occupancy.
+                      </li>
+                      <li className="list-disc">Minister reserves the right to reject incomplete applications.</li>
+                      <li className="list-disc">Information provided may be made public.</li>
+                      <li className="list-disc">Required documents must be submitted based on application type.</li>
+                      <li className="list-disc">Errors in the application form may cause processing delays.</li>
+                    </ul>
+                  ) : (
+                    <ul className="ml-4 mt-4">
+                      <li className="list-disc">Eligibility Guideline:</li>
+                      <li className="list-disc">The applicant must be an organization registered in Nigeria.</li>
+                      <li className="list-disc">
+                        The applicant must provide details of their previous or other allocations within the Federal
+                        Capital Territory (FCT).
+                      </li>
+                      <li className="list-disc">
+                        The applicant must specify the required land use or purpose from the provided list.
+                      </li>
+                      <li className="list-disc">
+                        The applicant must select a preferred location from the list of Councils or Districts provided
+                        in the table.
+                      </li>
+                      <li className="list-disc">
+                        The applicant must indicate the required plot size in square meters.
+                      </li>
+                      <li className="list-disc">
+                        Specific documents are required based on the application type, such as E-Payment Slip, Tax
+                        Clearance Certificate, Registration/Particulars of Director, Certificate of Incorporation, etc.
+                      </li>
+                      <li className="list-disc">​Statement of Agreement</li>
+                      <li className="list-disc">
+                        The applicant must confirm the accuracy of the information provided in the application.
+                      </li>
+                      <li className="list-disc">
+                        Compliance with regulations and guidelines set by the Department of Land Administration is
+                        required.
+                      </li>
+                      <li className="list-disc">False information may lead to application rejection.</li>
+                      <li className="list-disc">
+                        Mass-housing applicants are eligible for a lease agreement for development purposes only, not a
+                        right of occupancy.
+                      </li>
+                    </ul>
+                  )}
                 </label>
               </div>
 
@@ -91,7 +140,7 @@ export function Eligibility() {
                 disabled={!step}
                 name="Yes, I agree and wish to proceed"
                 trailingIcon={<FaArrowRight />}
-                onClick={() => navigation("/login")}
+                onClick={() => navigation("/login", { state: { type: params.state.type } })}
               />
               <div className="mb-4" />
             </>

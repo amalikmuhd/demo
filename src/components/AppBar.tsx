@@ -1,12 +1,15 @@
 import { FaArrowLeft } from "react-icons/fa6";
 import account from "/individual.png";
+import organization from "/organization.png";
 
 interface AppBar {
   onClick: () => void;
   title?: string;
   opacity?: boolean;
+  icon?: boolean;
+  individual?: boolean;
 }
-export const AppBar = ({ onClick, title, opacity }: AppBar) => {
+export const AppBar = ({ onClick, title, opacity, individual }: AppBar) => {
   return (
     <div className="flex flex-row justify-between gap-1 items-center my-[26px] w-[100%]">
       <button
@@ -21,7 +24,7 @@ export const AppBar = ({ onClick, title, opacity }: AppBar) => {
       </button>
 
       <div className="flex flex-row items-center h-[40px] gap-2">
-        <img src={account} className="w-[40px] " />
+        {title && <img src={individual ? account : organization} className="w-[40px] " />}
         <label className="text-left font-inter font-medium text-[14px] text-[#2DAA39]">{title}</label>
       </div>
       <div />

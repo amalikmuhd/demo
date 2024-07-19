@@ -67,14 +67,14 @@ function Home() {
                 <button
                   className="flex flex-col justify-start gap-1 border border-[#2DAA39] text-[#2DAA39] px-4 py-6 w-[333px] h-[188px] rounded-md transition-all duration-500 hover:scale-105"
                   // className="flex flex-col justify-start gap-1 border border-[#2DAA39] text-[#2DAA39] px-4 py-6 w-[333px] h-[188px] rounded-md transition-shadow  duration-500 cursor-pointer hover:shadow-lg hover:shadow-gray-400"
-                  onClick={() => navigate("/eligibility")}
+                  onClick={() => navigate("/eligibility", { state: { type: "Individual" } })}
                 >
                   <img src={individual} className="w-[40px] h-[40px]" />
                   <p className="text-left">Apply as an Individual</p>
                 </button>
                 <button
                   className="flex flex-col justify-start gap-1 border border-[#2DAA39] text-[#2DAA39] px-4 py-6 w-[333px] h-[188px] rounded-md transition-all duration-500 hover:scale-105"
-                  onClick={() => navigate("/eligibility")}
+                  onClick={() => navigate("/eligibility", { state: { type: "Organisation" } })}
                 >
                   <img src={organization} className="w-[40px] h-[40px]" />
                   <p className="text-left">Apply as an Organisation</p>

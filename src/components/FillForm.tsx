@@ -4,16 +4,32 @@ import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import { FaArrowRight } from "react-icons/fa6";
 import CustomSelect from "./CustomSelect";
-import { educationData, genderData, maritalStatusData, religionData } from "../data";
+import {
+  councilData,
+  districtData,
+  educationData,
+  genderData,
+  landuseData,
+  maritalStatusData,
+  purposeData,
+  religionData,
+  titleData,
+} from "../data";
 import { IMakePaymentForm } from "../types";
 import CustomAreaText from "./CustomAreaText";
 import CustomFileInput from "./CustomFileInput";
+import { useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 interface FillFormForm {
   handleNext: () => void | undefined;
 }
 
 const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
+  const params = useLocation();
+
+  //  const query = useQuery
+
   const { control, handleSubmit } = useForm<IMakePaymentForm>({
     // resolver: yupResolver(makePaymentFormSchema),
   });
@@ -34,12 +50,40 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
         {/* step 1 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
-            <CustomInput name="name" label={"Name of Organisation"} control={control as never} />
-            <CustomInput name="children" label={"Children"} control={control as never} />
+            <CustomInput
+              plainText
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              name="name2"
+              label={"Name of Organisation"}
+              asterisk
+              control={control as never}
+            />
+            <CustomInput
+              name="email2"
+              plainText
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              label={"Organization Email"}
+              asterisk
+              control={control as never}
+            />
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
-            <CustomInput name="email" label={"Organization Email"} control={control as never} />
-            <CustomInput name="phone" label={"Phone No."} control={control as never} />
+            <CustomInput
+              name="email2"
+              plainText
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              label={"Phone No."}
+              asterisk
+              control={control as never}
+            />
+            <CustomInput
+              name="phone2"
+              plainText
+              plainStyle="bg-[#F6F6F6] border-[1px] rounded-md border-[#F6F6F6"
+              label={"Contact Person Name"}
+              asterisk
+              control={control as never}
+            />
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
             <CustomInput name="rc" label={"Registration Number (RC)"} asterisk control={control as never} />
@@ -67,13 +111,34 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
-        {/* step 2 */}
+        {/* step 22 */}
         <>
           <div className="flex flex-row items-start gap-1  mt-[16px]">
             <label className="text-left mb-[30px] font-inter font-medium text-[14px]">Contact Person</label>
           </div>
           <div className="flex flex-row justify-between gap-6">
+            <CustomInput name="designation" label={"Designation"} asterisk control={control as never} />
+            <CustomSelect
+              control={control as never}
+              name="title"
+              label="Title"
+              asterisk
+              placeholder=" "
+              options={titleData}
+            />
+            {/* <CustomInput type="date" name="dob" label={"Date of Birth"} asterisk control={control as never} /> */}
+          </div>
+
+          <div className="mt-[40px]" />
+          <div className={`bg-gray-400 h-[1px] w-4/4`} />
+          <div className="mb-[40px]" />
+        </>
+        {/* <>
+          <div className="flex flex-row items-start gap-1  mt-[16px]">
+            <label className="text-left mb-[30px] font-inter font-medium text-[14px]">Contact Person</label>
+          </div>
+          <div className="flex flex-row justify-between gap-6">
+            <CustomInput name="designation" label={"Designation"} control={control as never} />
             <CustomSelect
               control={control as never}
               name="gender"
@@ -82,7 +147,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
               placeholder=" "
               options={genderData}
             />
-            <CustomInput type="date" name="dob" label={"Date of Birth"} asterisk control={control as never} />
+            
           </div>
 
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -92,10 +157,9 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
-        </>
-
+        </> */}
         {/* step 3 */}
-        <>
+        {/* <>
           <div className="flex flex-row justify-between gap-6">
             <CustomInput name="nationality" label={"Nationality"} asterisk control={control as never} />
             <CustomInput name="origin" label={"State of Origin"} asterisk control={control as never} />
@@ -108,10 +172,9 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
-        </>
-
+        </> */}
         {/* step 4 */}
-        <>
+        {/* <>
           <div className="flex flex-row justify-between gap-6">
             <CustomSelect
               control={control as never}
@@ -145,10 +208,15 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
-        </>
-
+        </> */}
         {/* step 5 */}
+
         <>
+          <div className="flex flex-row items-start gap-1  mt-[16px]">
+            <label className="text-left mb-[30px] font-inter font-medium text-[14px]">
+              Address of Organization / Company Headquarter:
+            </label>
+          </div>
           <div className="flex flex-row justify-between gap-6">
             <CustomInput name="houseNo" label={"House No:"} asterisk control={control as never} />
             <CustomInput name="streetName" label={"Street Name"} asterisk control={control as never} />
@@ -173,25 +241,36 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-        {/*  step 6 */}
+
         <>
           <div className="flex flex-row justify-between gap-6">
-            <CustomInput name="homePhone" label={"Home Phone:"} control={control as never} />
-            <CustomInput name="office" label={"Office:"} control={control as never} />
-          </div>
-          <div className="flex flex-row justify-between gap-6 mt-[16px]">
+            <CustomInput name="officePhone" label={"Office Phone:"} asterisk control={control as never} />
             <CustomInput name="mobile" label={"Mobile"} asterisk control={control as never} />
-            <CustomInput name="facsimile" label={"Facsimile:"} control={control as never} />
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
-            <CustomInput name="email" label={"Email:"} asterisk control={control as never} />
-            <div className="flex-1" />
+            <CustomInput name="facsimile" label={"Facsimile"} control={control as never} />
+            <CustomInput name="email" label={"Email"} asterisk control={control as never} />
           </div>
           <div className="mt-[40px]" />
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
 
+        {/*  step 6 */}
+        <>
+          <div className="flex flex-row justify-between gap-6">
+            <CustomInput name="homePhone" label={"Home Phone::"} control={control as never} />
+            <CustomInput name="office" label={"Office:"} control={control as never} />
+          </div>
+          <div className="flex flex-row justify-between gap-6 mt-[16px]">
+            <CustomInput name="emails" label={"Email"} asterisk control={control as never} />
+            <div className="flex-1" />
+          </div>
+
+          <div className="mt-[40px]" />
+          <div className={`bg-gray-400 h-[1px] w-4/4`} />
+          <div className="mb-[40px]" />
+        </>
         {/*  step 7 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -208,7 +287,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
         {/* step 8 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -225,14 +303,14 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
               name="landuse"
               label="Landuse"
               placeholder=" "
-              options={maritalStatusData}
+              options={landuseData}
             />
             <CustomSelect
               control={control as never}
               name="purpose"
               label="Purpose"
               placeholder=" "
-              options={religionData}
+              options={purposeData}
             />
           </div>
 
@@ -240,7 +318,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
         {/* step 9 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -257,14 +334,14 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
               name="council"
               label="Council"
               placeholder=" "
-              options={maritalStatusData}
+              options={councilData}
             />
             <CustomSelect
               control={control as never}
               name="district"
               label="District"
               placeholder=" "
-              options={religionData}
+              options={districtData}
             />
           </div>
 
@@ -272,7 +349,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
         {/* step 10 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -284,7 +360,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
         {/* step 11 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -299,7 +374,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           <div className={`bg-gray-400 h-[1px] w-4/4`} />
           <div className="mb-[40px]" />
         </>
-
         {/* step 12 */}
         <>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
@@ -316,7 +390,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
           {/* <div className={`bg-gray-400 h-[1px] w-4/4`} /> */}
           <div className="mb-[40px]" />
         </>
-
         {/* step 13 */}
         {/* <>
           <div className="flex flex-row justify-between gap-6 mt-[16px] mb-[40px]">
@@ -333,7 +406,6 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext }) => {
             </div>
           </div>
         </> */}
-
         <CustomButton name="Submit form" trailingIcon={<FaArrowRight />} />
         <div className="mb-[40px]" />
       </div>
