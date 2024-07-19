@@ -97,24 +97,11 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
             <CustomInput name="rc" label={"Registration Number (RC)"} asterisk control={control as never} />
-            <CustomSelect
-              control={control as never}
-              name="nationRegistration"
-              label="Nation of Registration"
-              asterisk
-              placeholder=" "
-              options={genderData}
-            />
+            <CustomInput name="rccccc" label={"Nation of Registration"} asterisk control={control as never} />
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
-            <CustomSelect
-              control={control as never}
-              name="localGovernment"
-              label="Local Government"
-              asterisk
-              placeholder=" "
-              options={genderData}
-            />
+            <CustomInput name="rcc" label={"Local Government"} asterisk control={control as never} />
+
             <div className="flex-1" />
           </div>
           <div className="mt-[40px]" />
@@ -289,7 +276,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
             </label>
           </div>
           <div className="flex flex-row justify-between gap-6">
-            <CustomInput name="homePhone" label={""} control={control as never} />
+            <CustomInput name="homePhoneeeee" label={""} control={control as never} />
             <div className="flex-auto" />
           </div>
 

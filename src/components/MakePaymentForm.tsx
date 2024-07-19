@@ -32,6 +32,10 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
       setTimeout(() => {
         setLoading("payment");
       }, 2000);
+    } else if (loading === "payment") {
+      setTimeout(() => {
+        setLoading("success");
+      }, 10000);
     } else if (loading === "redirect") {
       setTimeout(() => {
         handleNext();
