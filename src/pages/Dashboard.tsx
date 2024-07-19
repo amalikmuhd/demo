@@ -14,7 +14,7 @@ import { userProfile } from "../services/Endpoints";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-  const { isPending, error, data } = useQuery({
+  const { data } = useQuery({
     queryKey: ["repoData"],
     queryFn: () => userProfile(),
   });
@@ -33,7 +33,7 @@ function Dashboard() {
     <div>
       <div>
         <img src={image} />
-        <div className="absolute top-0 right-2 mr-12 mt-10 flex flex-row items-center w-[200px] gap-2">
+        <div className="absolute top-0 right-2 mr-12 mt-10 flex flex-row items-center w-[300px] gap-2">
           <p className="font-inter font-semibold text-[14px]">Welcome {`${data?.data?.data?.firstName}`}</p>
           <img
             src={profile}
