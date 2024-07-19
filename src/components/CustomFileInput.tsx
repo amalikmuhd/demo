@@ -13,7 +13,7 @@ interface CustomFileInputProps {
 }
 
 const CustomFileInput: React.FC<CustomFileInputProps> = ({ control, name, label, asterisk = false, rules, tag }) => {
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [filePreview, setFilePreview] = useState<string | null>(null);
 
   return (
     <Controller
@@ -29,14 +29,19 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ control, name, label,
           <div className="relative flex items-center">
             <input
               type="file"
+              accept="image/*"
               className="absolute opacity-0 w-full h-full cursor-pointer"
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) {
-                  setFileName(file.name);
+                  const reader = new FileReader();
+                  reader.onloadend = () => {
+                    setFilePreview(reader.result as string);
+                  };
+                  reader.readAsDataURL(file);
                   onChange(file);
                 } else {
-                  setFileName(null);
+                  setFilePreview(null);
                 }
               }}
               onBlur={onBlur}
@@ -48,10 +53,12 @@ const CustomFileInput: React.FC<CustomFileInputProps> = ({ control, name, label,
               <GrUpload className="mr-2 text-blue-500" />
               <p className="text-[#1072E5] font-inter font-[14px]">Choose File</p>
             </button>
-            <p className="text-left mt-1 text-sm font-inter font-normal text-gray-500">
-              {fileName ? fileName : "No file chosen"}
-            </p>
           </div>
+          {filePreview ? (
+            <img src={filePreview} alt="Preview" className="mt-2 w-32 h-32 object-cover rounded-md" />
+          ) : (
+            <p className="text-left mt-1 text-sm font-inter font-normal text-gray-500">No file chosen</p>
+          )}
           {error && <p className="text-left mt-1 text-[red] text-sm font-inter font-normal">{error.message}</p>}
           {tag && <p className="text-left text-sm font-inter font-normal mt-[16px] text-black/30">{tag}</p>}
         </div>
