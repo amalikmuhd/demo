@@ -8,7 +8,7 @@ interface FinishProps {
   handleNext: () => void | undefined;
 }
 
-const Finish: React.FC<FinishProps> = ({ handleNext, email }) => {
+const Finish: React.FC<FinishProps> = ({ handleNext }) => {
   return (
     <div className="flex flex-col items-center mt-[53px]">
       <div className="w-[35%]">
