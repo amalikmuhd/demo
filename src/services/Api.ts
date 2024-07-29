@@ -1,4 +1,3 @@
-// import { load } from "@/utils/storage";
 import axios from "axios";
 
 const Api = axios.create({

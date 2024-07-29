@@ -3,6 +3,7 @@ export interface IFillForm {
   lastName: string;
   email: string;
   phoneNumber: string;
+  middle?: string;
 }
 export interface IMakePaymentForm {
   applicationType: string;

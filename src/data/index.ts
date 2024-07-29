@@ -58,6 +58,10 @@ const dataOrg = [
 
 const titleData = [
   {
+    label: "",
+    value: "",
+  },
+  {
     label: "Mr.",
     value: "Mr.",
   },
@@ -122,6 +126,10 @@ const titleData = [
 
 const genderData = [
   {
+    label: "",
+    value: "",
+  },
+  {
     label: "Male",
     value: "Male",
   },
@@ -131,6 +139,10 @@ const genderData = [
   },
 ];
 const maritalStatusData = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "Single",
     value: "single",
@@ -162,6 +174,10 @@ const maritalStatusData = [
 ];
 
 const religionData = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "Christianity",
     value: "christianity",
@@ -200,6 +216,10 @@ const religionData = [
   },
 ];
 const educationData = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "No Formal Education",
     value: "No Formal Education",
@@ -247,6 +267,10 @@ const educationData = [
 ];
 const landuseData = [
   {
+    label: "",
+    value: "",
+  },
+  {
     label: "Residential",
     value: "Residential",
   },
@@ -285,6 +309,10 @@ const landuseData = [
 ];
 const purposeData = [
   {
+    label: "",
+    value: "",
+  },
+  {
     label: "Life Camp",
     value: "Life Camp",
   },
@@ -310,6 +338,10 @@ const purposeData = [
   },
 ];
 const councilData = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "FCC Phase I",
     value: "FCC Phase I",
@@ -348,6 +380,10 @@ const councilData = [
   },
 ];
 const districtData = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "Central Area",
     value: "Central Area",
