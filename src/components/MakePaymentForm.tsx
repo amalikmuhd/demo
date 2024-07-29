@@ -94,6 +94,7 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
                 name="paymentFee"
                 valueInput={watch("applicationType")}
                 plainText
+                bgInput="bg[#E4F0FF]"
                 control={control as never}
                 placeholder={"₦00.00"}
               />

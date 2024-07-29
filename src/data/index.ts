@@ -1,5 +1,9 @@
 const dataIndividual = [
   {
+    label: "",
+    value: "",
+  },
+  {
     id: 1,
     label: "Private",
     value: "₦100,000",
@@ -13,6 +17,10 @@ const dataIndividual = [
 ];
 
 const dataOrg = [
+  {
+    label: "",
+    value: "",
+  },
   {
     label: "Commercial",
     value: "₦100,000",

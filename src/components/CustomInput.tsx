@@ -15,6 +15,7 @@ interface CustomInputProps {
   type?: React.HTMLInputTypeAttribute | undefined;
   plainStyle?: string;
   trailingIcon?: boolean;
+  bgInput?: string;
 }
 
 const CustomInput = ({
@@ -28,6 +29,7 @@ const CustomInput = ({
   type = "text",
   plainStyle,
   trailingIcon,
+  bgInput,
 }: CustomInputProps) => {
   const [show, setShow] = useState(false);
   return (
@@ -53,8 +55,8 @@ const CustomInput = ({
               type={type === "password" && !show ? "password" : "text"}
               disabled={plainText}
               placeholder={placeholder}
-              // className={`bg-[#F6F6F6] rounded-md outline-none flex-1`}
-              className={`rounded-md outline-none flex-1`}
+              className={`${bgInput || "bg-[#F6F6F6]"}  rounded-md outline-none flex-1`}
+              // className={`rounded-md outline-none flex-1`}
               value={valueInput || value}
               onChange={(e) => onChange(e.target.value)}
               onBlur={() => onBlur()}
