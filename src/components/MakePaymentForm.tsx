@@ -86,7 +86,7 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
                 asterisk
                 placeholder=" "
                 showTheValue={false}
-                options={params.state.type !== "Individual" ? dataIndividual : dataOrg}
+                options={params.state.type === "Individual" ? dataIndividual : dataOrg}
               />
               <div className="mb-[10px]" />
               <CustomInput
