@@ -1,4 +1,3 @@
-// import { load } from "@/utils/storage";
 import axios from "axios";
 
 const Api = axios.create({
@@ -8,7 +7,6 @@ const Api = axios.create({
 Api.interceptors.request.use(
   async (config) => {
     const token = JSON.parse(localStorage.getItem("token") as never);
-    console.log(token, "storage");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

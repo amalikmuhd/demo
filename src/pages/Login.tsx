@@ -46,7 +46,7 @@ const Login: React.FC = () => {
 
     onSuccess: (data) => {
       if (data.data.message === "success") {
-        localStorage.setItem("token", JSON.stringify(data.data.token));
+        localStorage.setItem("token", JSON.stringify(data.data.accessToken));
         navigation("/dashboard", { state: { type: params.state.type } });
       }
     },
@@ -87,6 +87,7 @@ const Login: React.FC = () => {
             />
           </div>
           <div className="my-[40px]" />
+
           <CustomButton
             name="Log in"
             trailingIcon={
