@@ -8,7 +8,7 @@ import {
   councilData,
   districtData,
   // educationData,
-  genderData,
+  // genderData,
   landuseData,
   // maritalStatusData,
   purposeData,

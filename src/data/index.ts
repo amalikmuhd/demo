@@ -1,14 +1,37 @@
-const data = [
+const dataIndividual = [
+  {
+    id: 1,
+    label: "Private",
+    value: "₦100,000",
+  },
+  { id: 2, label: "Relocation", value: "₦30,000" },
+  {
+    id: 3,
+    label: "Resettlement",
+    value: "₦30,000",
+  },
+];
+
+const dataOrg = [
   {
     label: "Commercial",
+    value: "₦100,000",
+  },
+  {
+    label: "Area Council",
     value: "₦100,000",
   },
   {
     label: "Institutional",
     value: "₦100,000",
   },
+
   {
-    label: "Non Governmental Organisations",
+    label: "Resettlement",
+    value: "₦100,000",
+  },
+  {
+    label: "NGO",
     value: "₦100,000",
   },
   {
@@ -20,7 +43,7 @@ const data = [
     value: "₦100,000",
   },
   {
-    label: "Masshousing",
+    label: "Mass Housing",
     value: "₦100,000",
   },
 ];
@@ -352,7 +375,8 @@ const districtData = [
 ];
 
 export {
-  data,
+  dataIndividual,
+  dataOrg,
   titleData,
   maritalStatusData,
   religionData,

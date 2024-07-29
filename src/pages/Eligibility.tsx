@@ -28,83 +28,51 @@ export function Eligibility() {
                   <p className="text-[#000000] font-inter font-semibold mb-2">
                     {params.state.type === "Individual" ? "Individual Application" : "Organization Application"}
                   </p>
-                  <p>1. Obtaining of new application forms from AGIS office or download from AGIS website;</p>
-                  <p>2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.</p>
-                  <p>3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.</p>
-                  <p>4. Open File at New Application Desk with the following documents enclosed;</p>
-                  <p>i) New Application Form properly filled,</p>
-                  <p>ii) Tax Clearance Certificate for Individuals & Corporate bodies,</p>
-                  <p>iii) CAC form C07,</p>
-                  <p>iv) Photocopy of receipt,</p>
-                  <p>v) Two Passport size photographs and</p>
-                  <p>
-                    vi) Acceptable means of identification (driver’s license, National ID or International passport)
-                  </p>
+                  {params.state.type === "Individual" ? (
+                    <>
+                      {firstData.map((item, index) => (
+                        <p key={index}>{item}</p>
+                      ))}
+                      <ul>
+                        {dataIndividual.map((item, index) => (
+                          <li key={index} className="ml-6 list-disc">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      {secondData.map((item, index) => (
+                        <p key={index}>{item}</p>
+                      ))}
+                      <ul>
+                        {dataOrg.map((item, index) => (
+                          <li key={index} className="ml-6 list-disc">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+
                   <p>5) Obtain Acknowledgement Form for keeps.</p>
 
                   {params.state.type === "Individual" ? (
                     <ul className="ml-4 mt-4">
-                      <li className="list-disc">Eligibility Guideline:</li>
-                      <li className="list-disc">Applicants must be individuals.</li>
-                      <li className="list-disc">
-                        Land applied for must be for specific purposes listed in the document.
-                      </li>
-                      <li className="list-disc">
-                        Personal details like name, gender, date of birth, occupation, nationality, etc., must be
-                        provided.
-                      </li>
-                      <li className="list-disc">
-                        A preferred location and required plot size must be selected from the provided list.
-                      </li>
-                      <li className="list-disc">
-                        Different document submission requirements exist based on application type (PRIV, RELO, REST).
-                      </li>
-                      <li className="list-disc">​Statement of Agreement</li>
-                      <li className="list-disc">Applicants confirm accuracy of preferred location and plot size..</li>
-                      <li className="list-disc">
-                        False information provision is punishable and may lead to revocation of Certificate of
-                        Occupancy.
-                      </li>
-                      <li className="list-disc">Minister reserves the right to reject incomplete applications.</li>
-                      <li className="list-disc">Information provided may be made public.</li>
-                      <li className="list-disc">Required documents must be submitted based on application type.</li>
-                      <li className="list-disc">Errors in the application form may cause processing delays.</li>
+                      {eligibilityIndividual.map((item, index) => (
+                        <li key={index} className="list-disc">
+                          {item}
+                        </li>
+                      ))}
                     </ul>
                   ) : (
                     <ul className="ml-4 mt-4">
-                      <li className="list-disc">Eligibility Guideline:</li>
-                      <li className="list-disc">The applicant must be an organization registered in Nigeria.</li>
-                      <li className="list-disc">
-                        The applicant must provide details of their previous or other allocations within the Federal
-                        Capital Territory (FCT).
-                      </li>
-                      <li className="list-disc">
-                        The applicant must specify the required land use or purpose from the provided list.
-                      </li>
-                      <li className="list-disc">
-                        The applicant must select a preferred location from the list of Councils or Districts provided
-                        in the table.
-                      </li>
-                      <li className="list-disc">
-                        The applicant must indicate the required plot size in square meters.
-                      </li>
-                      <li className="list-disc">
-                        Specific documents are required based on the application type, such as E-Payment Slip, Tax
-                        Clearance Certificate, Registration/Particulars of Director, Certificate of Incorporation, etc.
-                      </li>
-                      <li className="list-disc">​Statement of Agreement</li>
-                      <li className="list-disc">
-                        The applicant must confirm the accuracy of the information provided in the application.
-                      </li>
-                      <li className="list-disc">
-                        Compliance with regulations and guidelines set by the Department of Land Administration is
-                        required.
-                      </li>
-                      <li className="list-disc">False information may lead to application rejection.</li>
-                      <li className="list-disc">
-                        Mass-housing applicants are eligible for a lease agreement for development purposes only, not a
-                        right of occupancy.
-                      </li>
+                      {eligibilityOrg.map((item, index) => (
+                        <li key={index} className="list-disc">
+                          {item}
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </label>
@@ -125,7 +93,9 @@ export function Eligibility() {
               </div>
 
               <div className="flex flex-col justify-center my-[40px]">
-                <label className="text-left font-inter font-normal text-[16px]">Statement of Attestation</label>
+                <label className="text-left font-inter font-normal text-[16px] uppercase">
+                  Statement of Attestation
+                </label>
               </div>
 
               <div className="flex flex-row place-items-start my-[30px]">
@@ -144,14 +114,71 @@ export function Eligibility() {
               />
               <div className="mb-4" />
             </>
-            {/* <div className="flex flex-col justify-center items-center mt-[160px]">
-              <label className="text-left font-inter font-normal text-[16px]">
-                @AGIS 2024 &bull; Powered by Abuja Geographic Information Systems
-              </label>
-            </div> */}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+const firstData = [
+  "1. Obtaining of new application forms from AGIS office or download from AGIS website",
+  "2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.",
+  "3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.",
+  "4. Open File at New Application Desk with the following documents enclosed",
+];
+const dataIndividual = [
+  "New Application Form properly filled",
+  "Tax Clearance Certificate for Individuals & Corporate bodies",
+  "Photocopy of receipt",
+  "Two Passport size photographs",
+  "Acceptable means of identification (driver’s license, National ID or International passport)",
+];
+
+const eligibilityIndividual = [
+  "Eligibility Guideline:",
+  "Applicants must be individuals.",
+  "Land applied for must be for specific purposes listed in the document.",
+  "Personal details like name, gender, date of birth, occupation, nationality, etc., must be provided.",
+  "A preferred location and required plot size must be selected from the provided list.",
+  "Different document submission requirements exist based on application type (PRIV, RELO, REST).",
+  "​Statement of Agreement",
+  "Applicants confirm accuracy of preferred location and plot size.",
+  "False information provision is punishable and may lead to revocation of Certificate of Occupancy.",
+  "Minister reserves the right to reject incomplete applications.",
+  "Information provided may be made public.",
+  "Required documents must be submitted based on application type.",
+  "Errors in the application form may cause processing delays.",
+  "Remita Payment receipt must be uploaded.",
+];
+
+const secondData = [
+  "1. Obtaining of new application forms from AGIS office or download from AGIS website",
+  "2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.",
+  "3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.",
+  "4. Open File at New Application Desk with the following documents enclosed;",
+];
+
+const dataOrg = [
+  "New Application Form properly filled",
+  "Tax Clearance Certificate for Individuals & Corporate bodies",
+  "CAC form C07",
+  "Photocopy of receipt",
+  "Two Passport size photographs",
+  "Acceptable means of identification (driver’s license, National ID or International passport)",
+];
+
+const eligibilityOrg = [
+  "Eligibility Guideline:",
+  "The applicant must be an organization registered in Nigeria.",
+  "The applicant must provide details of their previous or other allocations within the Federal Capital Territory (FCT).",
+  "The applicant must specify the required land use or purpose from the provided list.",
+  "The applicant must select a preferred location from the list of Councils or Districts provided in the table.",
+  "The applicant must indicate the required plot size in square meters.",
+  "Specific documents are required based on the application type, such as E-Payment Slip, Tax Clearance Certificate, Registration/Particulars of Director, Certificate of Incorporation, etc. ​",
+  "Statement of Agreement: ​",
+  "The applicant must confirm the accuracy of the information provided in the application.",
+  "Compliance with regulations and guidelines set by the Department of Land Administration is required.",
+  "False information may lead to application rejection.",
+  "Mass-housing applicants are eligible for a lease agreement for development purposes only, not a right of occupancy.",
+];

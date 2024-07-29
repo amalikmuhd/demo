@@ -9,33 +9,43 @@ import RemitaPaymentScreen from "./RemitaPaymentScreen";
 import ScreenLoaderRedirect from "./ScreenLoaderRedirect";
 import RemitaSuccess from "./RemitaSuccess";
 import CustomSelect from "./CustomSelect";
-import { data } from "../data";
+import { dataIndividual, dataOrg } from "../data";
+import { useLocation } from "react-router-dom";
+import RemitaReceipt from "./RemitaReceipt";
 
 interface MakePaymentForm {
   handleNext: () => void | undefined;
 }
 
 const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
+  const params = useLocation();
+
   const [loading, setLoading] = useState("initial");
 
-  const { control, handleSubmit, watch } = useForm<IMakePaymentForm>({
-    // resolver: yupResolver(makePaymentFormSchema),
-  });
+  const { control, handleSubmit, watch } = useForm<IMakePaymentForm>({});
 
-  const onSubmit: SubmitHandler<IMakePaymentForm> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IMakePaymentForm> = () => {
     handleNext();
   };
 
   useEffect(() => {
+    // if (loading === "loading") {
+    //   setTimeout(() => {
+    //     setLoading("payment");
+    //   }, 2000);
+    // } else if (loading === "payment") {
+    //   setTimeout(() => {
+    //     setLoading("success");
+    //   }, 10000);
+    // } else if (loading === "redirect") {
+    //   setTimeout(() => {
+    //     handleNext();
+    //   }, 2000);
+    // }
     if (loading === "loading") {
       setTimeout(() => {
         setLoading("payment");
       }, 2000);
-    } else if (loading === "payment") {
-      setTimeout(() => {
-        setLoading("success");
-      }, 10000);
     } else if (loading === "redirect") {
       setTimeout(() => {
         handleNext();
@@ -53,24 +63,30 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
           }}
         />
       )}
-      {loading === "success" && <RemitaSuccess handleNext={() => setLoading("redirect")} />}
+      {loading === "success" && <RemitaSuccess handleNext={() => setLoading("receipt")} />}
+      {loading === "receipt" && <RemitaReceipt handleNext={() => setLoading("redirect")} />}
       {loading === "redirect" && <ScreenLoaderRedirect />}
       {loading === "initial" && (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
           <div className="w-[40%]">
             <div className="mb-[40px] mt-[50px]">
-              {/* <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
-                <label className="text-left mb-[8px] font-inter font-semibold text-[18px]">
-                  Proceed to make payment using Remita
-                </label>
-              </div> */}
+              {/* <CustomInput
+                label={"Application Date"}
+                name="paymentFee"
+                valueInput={new Date().getFullYear as never}
+                plainText
+                control={control as never}
+                placeholder={`${(today = mm + "/" + dd + "/" + yyyy)}`}
+              /> */}
+              <div className="mb-[10px]" />
               <CustomSelect
                 control={control as never}
                 name="applicationType"
                 label="Select Application type"
                 asterisk
                 placeholder=" "
-                options={data}
+                showTheValue={false}
+                options={params.state.type !== "Individual" ? dataIndividual : dataOrg}
               />
               <div className="mb-[10px]" />
               <CustomInput
@@ -83,16 +99,6 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
               />
             </div>
 
-            {/* <div className="flex flex-row justify-between gap-6 mt-[16px] mb-[40px]">
-                  <div className="flex flex-row items-start gap-1 mb-[16px]">
-                    <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/40">
-                      <label className="text-left font-inter font-normal text-sm text-[#DD1D1D]">Note: </label>
-                      This payment is based on the application type you selected initially when filling the form. The
-                      payment will be made through Remita. Copy the RRR transaction code from the receipt after payment
-                      for further verification.
-                    </label>
-                  </div>
-                </div> */}
             <CustomButton
               disabled={!watch("applicationType") ? true : false}
               name={`Make Payment ${watch("applicationType") || ""}`}
