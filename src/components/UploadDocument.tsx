@@ -97,7 +97,6 @@ const UploadDocument: React.FC<MakePaymentForm> = ({ handleNext }) => {
       ) : (
         <div className="w-[60%]">
           <>
-            org
             <div className="flex flex-row justify-between gap-6 mb-[10px]">
               <label className="text-left font-inter font-normal text-sm">
                 Upload the required documents. Ensure documents are clearly scanned and readable
