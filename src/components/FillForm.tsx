@@ -100,7 +100,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
     handleNext();
   };
 
-  return params.state.type !== "Individual" ? (
+  return params.state.type === "Individual" ? (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
       <div className="w-[60%]">
         <div className="flex flex-row items-start gap-1  mt-[16px] mb-[16px]">
