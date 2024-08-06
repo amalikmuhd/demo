@@ -56,7 +56,7 @@ export function Eligibility() {
                     </>
                   )}
 
-                  <p>5) Obtain Acknowledgement Form for keeps.</p>
+                  {/* <p>5) Obtain Acknowledgement Form for keeps.</p> */}
 
                   {params.state.type === "Individual" ? (
                     <>
@@ -169,8 +169,8 @@ const secondData = [
 const dataOrg = [
   "New Application Form properly filled",
   "Certificate of Incorporation CAC",
-  "Tax Clearance Certificate for Company",
   "CAC form C07",
+  "Tax Clearance Certificate for Company",
   "Payment receipt from Remita",
 
   // "Two Passport size photographs",
