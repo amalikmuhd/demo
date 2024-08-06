@@ -168,11 +168,13 @@ const secondData = [
 
 const dataOrg = [
   "New Application Form properly filled",
-  "Tax Clearance Certificate for Individuals & Corporate bodies",
+  "Certificate of Incorporation CAC",
+  "Tax Clearance Certificate for Company",
   "CAC form C07",
-  "Photocopy of receipt",
-  "Two Passport size photographs",
-  "Acceptable means of identification (driver’s license, National ID or International passport)",
+  "Payment receipt from Remita",
+
+  // "Two Passport size photographs",
+  "Acceptable means of identification  for all company directors (driver’s license, National ID or International passport)",
   // "No refunded 100k",
 ];
 
