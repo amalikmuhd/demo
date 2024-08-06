@@ -129,7 +129,8 @@ export function Eligibility() {
 
 const firstData = [
   "1. Obtaining of new application forms from AGIS office or download from AGIS website",
-  "2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.",
+  // "2. Payment of necessary fees which is N100,000.00 non-refunded payment of application fees for Commercial/Residential plots.",
+  "2. Non-Refundable Payment of necessary Application fees",
   "3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.",
   "4. Open File at New Application Desk with the following documents enclosed",
 ];
@@ -159,7 +160,8 @@ const eligibilityIndividual = [
 
 const secondData = [
   "1. Obtaining of new application forms from AGIS office or download from AGIS website",
-  "2. Payment of necessary fees which is N100,000.00 for Commercial/Residential plots.",
+  "2. Non-Refundable Payment of necessary Application fees",
+  // "2. Payment of necessary fees which is N100,000.00 non-refunded for Commercial/Residential plots.",
   "3. Present evidence of payment (teller) to AGIS Finance and obtain receipt.",
   "4. Open File at New Application Desk with the following documents enclosed;",
 ];
@@ -171,7 +173,7 @@ const dataOrg = [
   "Photocopy of receipt",
   "Two Passport size photographs",
   "Acceptable means of identification (driver’s license, National ID or International passport)",
-  "No refunded 100k",
+  // "No refunded 100k",
 ];
 
 const eligibilityOrg = [
