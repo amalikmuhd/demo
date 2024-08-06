@@ -145,7 +145,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
       phoneNumber: phoneNumber,
       middle: "",
     },
-    resolver: yupResolver(params.state.type === "Individual" ? validationSchema : OrgSchema) as never,
+    resolver: yupResolver(validationSchema) as never,
   });
 
   const onSubmit: SubmitHandler<IFillForm> = () => {
