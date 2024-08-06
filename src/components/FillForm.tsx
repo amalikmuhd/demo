@@ -35,14 +35,14 @@ interface FillFormForm {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
   gender: Yup.string().required("Gender is required"),
-  occupation: Yup.string().required("Occupation is required"),
-  children: Yup.number()
-    .required("Number of Children is required")
-    .positive("Must be positive")
-    .integer("Must be an integer"),
-  nationality: Yup.string().required("Nationality is required"),
-  origin: Yup.string().required("State of Origin is required"),
-  localGov: Yup.string().required("Local Gov. is required"),
+  // occupation: Yup.string().required("Occupation is required"),
+  // children: Yup.number()
+  //   .required("Number of Children is required")
+  //   .positive("Must be positive")
+  //   .integer("Must be an integer"),
+  // nationality: Yup.string().required("Nationality is required"),
+  // origin: Yup.string().required("State of Origin is required"),
+  // localGov: Yup.string().required("Local Gov. is required"),
 
   // orgemail: Yup.string().required("Email is required"),
   // officePhone: Yup.string().required("Office Phone is required"),
@@ -58,17 +58,17 @@ const validationSchema = Yup.object().shape({
 
   // dob: Yup.date().required("Date of Birth is required").nullable(),
 
-  maritalStatus: Yup.string().required("Marital Status is required"),
-  religion: Yup.string().required("Religion is required"),
-  education: Yup.string().required("Education is required"),
-  houseNo: Yup.string().required("House No is required"),
-  streetName: Yup.string().required("Street Name is required"),
-  streetExtension: Yup.string(),
-  cityDistrict: Yup.string().required("City-District is required"),
-  state: Yup.string().required("State is required"),
-  country: Yup.string().required("Country is required"),
-  popmb: Yup.string().required("P.O/P.M.B is required"),
-  co: Yup.string().required("C/O is required"),
+  // maritalStatus: Yup.string().required("Marital Status is required"),
+  // religion: Yup.string().required("Religion is required"),
+  // education: Yup.string().required("Education is required"),
+  // houseNo: Yup.string().required("House No is required"),
+  // streetName: Yup.string().required("Street Name is required"),
+  // streetExtension: Yup.string(),
+  // cityDistrict: Yup.string().required("City-District is required"),
+  // state: Yup.string().required("State is required"),
+  // country: Yup.string().required("Country is required"),
+  // popmb: Yup.string().required("P.O/P.M.B is required"),
+  // co: Yup.string().required("C/O is required"),
   // additional: Yup.string(),
   // office: Yup.string().required("Office is required"),
   // homePhone: Yup.string().matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
