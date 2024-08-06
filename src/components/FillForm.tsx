@@ -34,20 +34,7 @@ interface FillFormForm {
 // Validation schema
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
-  office: Yup.string().required("Office is required"),
-  orgemail: Yup.string().required("Email is required"),
-  officePhone: Yup.string().required("Office Phone is required"),
-  mobile: Yup.string().required("Mobile is required"),
-  lc: Yup.string().required("Local Government is required"),
-  nor: Yup.string().required("Nation of Registration is required"),
-  rc: Yup.string().required("Registration Number (RC) is required"),
-  designation: Yup.string().required("Designation is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: Yup.string()
-    .required("Phone No. is required")
-    .matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
   gender: Yup.string().required("Gender is required"),
-  dob: Yup.date().required("Date of Birth is required").nullable(),
   occupation: Yup.string().required("Occupation is required"),
   children: Yup.number()
     .required("Number of Children is required")
@@ -56,6 +43,21 @@ const validationSchema = Yup.object().shape({
   nationality: Yup.string().required("Nationality is required"),
   origin: Yup.string().required("State of Origin is required"),
   localGov: Yup.string().required("Local Gov. is required"),
+
+  // orgemail: Yup.string().required("Email is required"),
+  // officePhone: Yup.string().required("Office Phone is required"),
+  // mobile: Yup.string().required("Mobile is required"),
+  // lc: Yup.string().required("Local Government is required"),
+  // nor: Yup.string().required("Nation of Registration is required"),
+  // rc: Yup.string().required("Registration Number (RC) is required"),
+  // designation: Yup.string().required("Designation is required"),
+  // email: Yup.string().email("Invalid email").required("Email is required"),
+  // phoneNumber: Yup.string()
+  //   .required("Phone No. is required")
+  //   .matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
+
+  // dob: Yup.date().required("Date of Birth is required").nullable(),
+
   maritalStatus: Yup.string().required("Marital Status is required"),
   religion: Yup.string().required("Religion is required"),
   education: Yup.string().required("Education is required"),
@@ -67,16 +69,66 @@ const validationSchema = Yup.object().shape({
   country: Yup.string().required("Country is required"),
   popmb: Yup.string().required("P.O/P.M.B is required"),
   co: Yup.string().required("C/O is required"),
-  additional: Yup.string(),
+  // additional: Yup.string(),
+  office: Yup.string().required("Office is required"),
   homePhone: Yup.string().matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
   nin: Yup.string().required("NIN is required").length(11, "NIN must be 11 digits"),
-  homePhoneeeee: Yup.string(),
-  landuse: Yup.string().required("Landuse is required"),
-  purpose: Yup.string().required("Purpose is required"),
-  council: Yup.string().required("Council is required"),
-  district: Yup.string().required("District is required"),
-  plotSize: Yup.number().required("Plot Size is required").positive("Must be positive"),
-  comment: Yup.string(),
+  // landuse: Yup.string().required("Landuse is required"),
+  // purpose: Yup.string().required("Purpose is required"),
+  // council: Yup.string().required("Council is required"),
+  // district: Yup.string().required("District is required"),
+  // plotSize: Yup.number().required("Plot Size is required").positive("Must be positive"),
+  // comment: Yup.string(),
+  // signature: Yup.mixed().required('Signature is required').test('fileType', 'Unsupported Format', (value) => {
+  //   return value && value[0] as never && ['image/jpeg', 'image/png'].includes(value[0].type);
+  // }),
+});
+
+const OrgSchema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  // office: Yup.string().required("Office is required"),
+  // orgemail: Yup.string().required("Email is required"),
+  // officePhone: Yup.string().required("Office Phone is required"),
+  // mobile: Yup.string().required("Mobile is required"),
+  // lc: Yup.string().required("Local Government is required"),
+  // nor: Yup.string().required("Nation of Registration is required"),
+  // rc: Yup.string().required("Registration Number (RC) is required"),
+  // designation: Yup.string().required("Designation is required"),
+  // email: Yup.string().email("Invalid email").required("Email is required"),
+  // phoneNumber: Yup.string()
+  //   .required("Phone No. is required")
+  //   .matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
+  // gender: Yup.string().required("Gender is required"),
+  // dob: Yup.date().required("Date of Birth is required").nullable(),
+  // occupation: Yup.string().required("Occupation is required"),
+  // children: Yup.number()
+  //   .required("Number of Children is required")
+  //   .positive("Must be positive")
+  //   .integer("Must be an integer"),
+  // nationality: Yup.string().required("Nationality is required"),
+  // origin: Yup.string().required("State of Origin is required"),
+  // localGov: Yup.string().required("Local Gov. is required"),
+  // maritalStatus: Yup.string().required("Marital Status is required"),
+  // religion: Yup.string().required("Religion is required"),
+  // education: Yup.string().required("Education is required"),
+  // houseNo: Yup.string().required("House No is required"),
+  // streetName: Yup.string().required("Street Name is required"),
+  // streetExtension: Yup.string(),
+  // cityDistrict: Yup.string().required("City-District is required"),
+  // state: Yup.string().required("State is required"),
+  // country: Yup.string().required("Country is required"),
+  // popmb: Yup.string().required("P.O/P.M.B is required"),
+  // co: Yup.string().required("C/O is required"),
+  // additional: Yup.string(),
+  // homePhone: Yup.string().matches(/^[0-9]{10,11}$/, "Phone number must be 10 or 11 digits"),
+  // nin: Yup.string().required("NIN is required").length(11, "NIN must be 11 digits"),
+  // homePhoneeeee: Yup.string(),
+  // landuse: Yup.string().required("Landuse is required"),
+  // purpose: Yup.string().required("Purpose is required"),
+  // council: Yup.string().required("Council is required"),
+  // district: Yup.string().required("District is required"),
+  // plotSize: Yup.number().required("Plot Size is required").positive("Must be positive"),
+  // comment: Yup.string(),
   // signature: Yup.mixed().required('Signature is required').test('fileType', 'Unsupported Format', (value) => {
   //   return value && value[0] as never && ['image/jpeg', 'image/png'].includes(value[0].type);
   // }),
@@ -93,7 +145,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
       phoneNumber: phoneNumber,
       middle: "",
     },
-    resolver: yupResolver(validationSchema) as never,
+    resolver: yupResolver(params.state.type === "Individual" ? validationSchema : OrgSchema) as never,
   });
 
   const onSubmit: SubmitHandler<IFillForm> = () => {
@@ -280,7 +332,7 @@ const FillForm: React.FC<FillFormForm> = ({ handleNext, firstName, lastName, ema
 
         <>
           <div className="flex flex-row justify-between gap-6">
-            <CustomInput name="homePhone" label={"Home Phone::"} control={control as never} />
+            <CustomInput name="homePhone" label={"Home Phone:"} control={control as never} />
             <CustomInput name="office" label={"Office:"} control={control as never} />
           </div>
           <div className="flex flex-row justify-between gap-6 mt-[16px]">
