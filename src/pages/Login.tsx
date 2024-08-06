@@ -67,7 +67,7 @@ const Login: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center">
         <div className="w-[40%]">
           <div className="flex flex-row my-[30px]">
-            <label className="text-left font-inter font-semibold text-[20px]">Log In to your Account</label>
+            <label className="text-left font-inter font-semibold text-[20px]">Log In</label>
           </div>
           <div className="mb-[40px]">
             <CustomInput

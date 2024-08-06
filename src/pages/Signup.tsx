@@ -113,7 +113,13 @@ const Signup: React.FC = () => {
               <div className="my-[14px]" />
               <CustomInput name="phoneNumber" label={"Phone No."} asterisk control={control as never} />
               <div className="my-[14px]" />
-              <CustomInput name="password" label={"Create Password"} asterisk control={control as never} />
+              <CustomInput
+                type="password"
+                name="password"
+                label={"Create Password"}
+                asterisk
+                control={control as never}
+              />
             </div>
             <div className="my-[40px]" />
             <CustomButton

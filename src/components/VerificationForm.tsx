@@ -7,6 +7,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { VerificationSchema, VerificationSchema2 } from "../models";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   rrr: string;
@@ -19,6 +20,7 @@ interface MakePaymentForm {
 }
 
 const VerificationForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
+  const params = useLocation();
   const {
     control,
     handleSubmit,
@@ -40,6 +42,7 @@ const VerificationForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
   const onSubmit2: SubmitHandler<Props2> = (data) => {
     console.log(data);
   };
+  // params.state.type === "Individual" ? "NIN"
 
   return (
     <div className="flex flex-col items-center">
@@ -64,7 +67,11 @@ const VerificationForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
         </div>
 
         <div className={`flex flex-row items-center gap-4 my-[20px] ${!one && "opacity-30"}`}>
-          <CustomInput name="nin" label={"2. Enter NIN"} control={control2 as never} />
+          <CustomInput
+            name="nin"
+            label={`${params.state.type === "Individual" ? "2. Enter NIN" : "Enter CAC"}`}
+            control={control2 as never}
+          />
           <div className="flex-[0.5]">
             <CustomButton
               paddingVertical={"py-[13px]"}
