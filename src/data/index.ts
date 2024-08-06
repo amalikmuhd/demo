@@ -8,6 +8,11 @@ const dataIndividual = [
     label: "Private",
     value: "₦100,000",
   },
+  {
+    id: 4,
+    label: "Area Council",
+    value: "₦50,000",
+  },
   { id: 2, label: "Relocation", value: "₦30,000" },
   {
     id: 3,
