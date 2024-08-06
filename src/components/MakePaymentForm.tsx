@@ -53,6 +53,18 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
     }
   }, [loading]);
 
+  const value = watch("applicationType");
+
+  const numericalValue = parseInt(value?.replace(/₦|,/g, ""));
+
+  // Add the application fee
+  // const updatedValue = numericalValue + 250;
+
+  // Format the updated value back to a currency string
+  const updatedValue = `₦${(numericalValue + 2500).toLocaleString()}`;
+
+  console.log(updatedValue, "bslue");
+
   return (
     <>
       {loading === "loading" && <ScreenLoader />}
@@ -86,7 +98,7 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
                 asterisk
                 placeholder=" "
                 showTheValue={false}
-                options={params.state.type === "Individual" ? dataIndividual : dataOrg}
+                options={params?.state?.type === "Individual" ? dataIndividual : dataOrg}
               />
               <div className="mb-[10px]" />
               <CustomInput
@@ -98,11 +110,21 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
                 control={control as never}
                 placeholder={"₦00.00"}
               />
+              <div className="mb-[10px]" />
+              <CustomInput
+                label={"Application Fee"}
+                name="applicationFee"
+                valueInput={watch("applicationType") && "₦2,500"}
+                plainText
+                bgInput="bg[#E4F0FF]"
+                control={control as never}
+                placeholder={"₦00.00"}
+              />
             </div>
 
             <CustomButton
               disabled={!watch("applicationType") ? true : false}
-              name={`Make Payment ${watch("applicationType") || ""}`}
+              name={`Make Payment ${updatedValue || ""}`}
               trailingIcon={<FaArrowRight />}
               onClick={() => setLoading("loading")}
             />

@@ -62,7 +62,7 @@ const OTPS: React.FC<MakePaymentForm> = ({ handleNext }) => {
     onError: (error: AxiosError<ErrorResponse>) => toast.error(error.response?.data.message),
     onSuccess: (data) => {
       if (data.data.message === "success") {
-        toast.success(`Otp has been to your ${watch("email")}`);
+        toast.success(`OTP has been sent to ${watch("email")}`);
         setLevel("verifying");
       }
     },
