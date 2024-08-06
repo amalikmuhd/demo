@@ -171,6 +171,7 @@ const dataOrg = [
   "Photocopy of receipt",
   "Two Passport size photographs",
   "Acceptable means of identification (driver’s license, National ID or International passport)",
+  "No refunded 100k",
 ];
 
 const eligibilityOrg = [
