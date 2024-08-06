@@ -23,7 +23,7 @@ function Home() {
                 </label>
               </div>
 
-              <div className="flex flex-row items-start gap-1 mb-[16px]">
+              {/* <div className="flex flex-row items-start gap-1 mb-[16px]">
                 <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/40">
                   It is a punishable offence to provide any false information and or make any false statements or claim
                   when completing this form. Where it is subsequently discovered that a Certificate of Occupancy was
@@ -32,7 +32,7 @@ function Home() {
                   or fully completed and shall not incur any liability for any such revocation". The information you
                   supply on this form is public knowledge and may be published in the media.
                 </label>
-              </div>
+              </div> */}
             </div>
 
             <>
