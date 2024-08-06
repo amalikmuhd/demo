@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const Api = axios.create({
-  baseURL: "https://koyeb-db-preview-app-aoomle.koyeb.app/api/v1/",
+  // baseURL: "https://fapay-backend.onrender.com/api/v1/",
+  baseURL: "https://fapay-backend.onrender.com/api/v1/",
 });
 
 Api.interceptors.request.use(
