@@ -20,13 +20,13 @@ export function Eligibility() {
 
             <>
               <div className="flex flex-col justify-center items-center my-[40px]">
-                <label className="text-left font-inter font-normal text-[16px]">{}Eligibility Criteria</label>
+                <label className="text-left font-inter font-normal text-[20px]">{}Eligibility Criteria</label>
               </div>
 
               <div className="flex flex-row items-start gap-1 mb-[16px]">
-                <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/50">
-                  <p className="text-[#000000] font-inter font-semibold mb-2">
-                    {params.state.type === "Individual" ? "Individual Application" : "Organization Application"}
+                <label className="text-left mb-[8px] font-inter font-normal text-sm">
+                  <p className="text-black text-[20px] mt-4 font-inter mb-4">
+                    {params.state.type === "Individual" ? "Individual Application:" : "Organization Application:"}
                   </p>
                   {params.state.type === "Individual" ? (
                     <>
@@ -59,29 +59,35 @@ export function Eligibility() {
                   <p>5) Obtain Acknowledgement Form for keeps.</p>
 
                   {params.state.type === "Individual" ? (
-                    <ul className="ml-4 mt-4">
-                      {eligibilityIndividual.map((item, index) => (
-                        <li key={index} className="list-disc">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <>
+                      <p className="list-disc text-[20px] mt-4 text-[#000000]">Eligibility Guideline:</p>
+                      <ul className="ml-4 mt-4">
+                        {eligibilityIndividual.map((item, index) => (
+                          <li key={index} className="list-disc text-[16px]">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
                   ) : (
-                    <ul className="ml-4 mt-4">
-                      {eligibilityOrg.map((item, index) => (
-                        <li key={index} className="list-disc">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <>
+                      <p className="list-disc text-[16px] mt-4 text-[#000000]">Eligibility Guideline:</p>
+                      <ul className="ml-4 mt-4">
+                        {eligibilityOrg.map((item, index) => (
+                          <li key={index} className="list-disc text-[16px]">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
                   )}
                 </label>
               </div>
 
               <div className="flex flex-row justify-between gap-6 mt-[16px] mb-[40px]">
                 <div className="flex flex-row items-start gap-1 mb-[16px]">
-                  <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/40">
-                    <label className="text-left font-inter font-normal text-sm text-[#DD1D1D]">Note: </label>
+                  <label className="text-left mb-[8px] font-inter font-normal text-sm text-black/80">
+                    <label className="text-left font-inter font-bold text-sm text-[red]">Note: </label>
                     It is a punishable offence to provide any false information and or make any false statements or
                     claim when completing this form. Where it is subsequently discovered that a Certificate of Occupancy
                     was issued based on false or inaccurate information, the Minister may in his sole discretion, revoke
@@ -136,7 +142,6 @@ const dataIndividual = [
 ];
 
 const eligibilityIndividual = [
-  "Eligibility Guideline:",
   "Applicants must be individuals.",
   "Land applied for must be for specific purposes listed in the document.",
   "Personal details like name, gender, date of birth, occupation, nationality, etc., must be provided.",
@@ -169,7 +174,6 @@ const dataOrg = [
 ];
 
 const eligibilityOrg = [
-  "Eligibility Guideline:",
   "The applicant must be an organization registered in Nigeria.",
   "The applicant must provide details of their previous or other allocations within the Federal Capital Territory (FCT).",
   "The applicant must specify the required land use or purpose from the provided list.",

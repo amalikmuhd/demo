@@ -18,7 +18,7 @@ const Finish: React.FC<FinishProps> = ({ handleNext }) => {
         </div>
 
         <div className="flex flex-row justify-between gap-6 mb-[25px]">
-          <label className="text-left font-inter font-normal text-[14px] text-black/50">
+          <label className="text-left font-inter font-normal text-[14px] text-black/80">
             Check your email inbox to see your login credentials. You can use them to log into the application and track
             your application.
           </label>

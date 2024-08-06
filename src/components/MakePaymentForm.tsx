@@ -29,28 +29,28 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
   };
 
   useEffect(() => {
-    // if (loading === "loading") {
-    //   setTimeout(() => {
-    //     setLoading("payment");
-    //   }, 2000);
-    // } else if (loading === "payment") {
-    //   setTimeout(() => {
-    //     setLoading("success");
-    //   }, 10000);
-    // } else if (loading === "redirect") {
-    //   setTimeout(() => {
-    //     handleNext();
-    //   }, 2000);
-    // }
     if (loading === "loading") {
       setTimeout(() => {
         setLoading("payment");
       }, 2000);
+    } else if (loading === "payment") {
+      setTimeout(() => {
+        setLoading("success");
+      }, 10000);
     } else if (loading === "redirect") {
       setTimeout(() => {
         handleNext();
       }, 2000);
     }
+    // if (loading === "loading") {
+    //   setTimeout(() => {
+    //     setLoading("payment");
+    //   }, 2000);
+    // } else if (loading === "redirect") {
+    //   setTimeout(() => {
+    //     handleNext();
+    //   }, 2000);
+    // }
   }, [loading]);
 
   const value = watch("applicationType");
@@ -62,8 +62,6 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
 
   // Format the updated value back to a currency string
   const updatedValue = `₦${(numericalValue + 2500).toLocaleString()}`;
-
-  console.log(updatedValue, "bslue");
 
   return (
     <>
@@ -112,7 +110,7 @@ const MakePaymentForm: React.FC<MakePaymentForm> = ({ handleNext }) => {
               />
               <div className="mb-[10px]" />
               <CustomInput
-                label={"Application Fee"}
+                label={"Processing Fee"}
                 name="applicationFee"
                 valueInput={watch("applicationType") && "₦2,500"}
                 plainText

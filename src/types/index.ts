@@ -16,7 +16,7 @@ export interface IMakePaymentForm {
 export type ISignUp = {
   email: string;
   firstName: string;
-  lastName: string;
+  lastName?: string;
   password: string;
   phoneNumber: string;
 };

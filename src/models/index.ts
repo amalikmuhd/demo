@@ -1,8 +1,14 @@
 import * as yup from "yup";
 
 export const signupFormSchema = yup.object({
-  firstName: yup.string().required("Input must be filled"),
-  lastName: yup.string().required("Input is must be filled"),
+  firstName: yup.string().required("Name is required"),
+  lastName: yup.string().required("Input is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  phoneNumber: yup.string().required("Phone number is required"),
+  password: yup.string().required("Password is required"),
+});
+export const signupFormOrg = yup.object({
+  firstName: yup.string().required("Name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
   phoneNumber: yup.string().required("Phone number is required"),
   password: yup.string().required("Password is required"),
