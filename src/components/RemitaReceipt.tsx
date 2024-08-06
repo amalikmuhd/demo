@@ -42,7 +42,7 @@ const RemitaReciept = ({ handleNext }: RemitaFakeProps) => {
 
       {/* Button */}
       <div className="flex justify-center items-center w-full h-full absolute top-0 left-10 z-20">
-        <div className="w-[100%] flex justify-center items-center mt-[50%] gap-4">
+        <div className="w-[100%] flex justify-center items-center mt-[47%] gap-4">
           <CustomButton
             name={"PRINT RECIEPT"}
             onClick={handlePrintImage}
